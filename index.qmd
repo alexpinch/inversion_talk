@@ -1,0 +1,121 @@
+---
+title: "Modelling locally adaptive inversions"
+author: Alex Pinch
+subtitle: My work so far
+date: 01/27/2023
+format: 
+  revealjs:
+    standalone: true
+    theme: default
+    progress: true
+incremental: false
+highlight-style: a11y
+---
+
+## SLiM in all it's glory
+![](slim.png){width="600"}
+
+## A slide with columns and an image
+
+::: columns
+::: {.column width="65%"}
+-   Some text beside an image
+-   [alexpinch.github.io](https://alexpinch.github.io)
+:::
+
+::: {.column width="35%"}
+![](me.jpg){width="200"}
+:::
+:::
+
+## Some code blocks
+
+```{r}
+print("A displayed R print statement, rendered in Quarto")
+print("150 + 243/3 = ")
+150 + 243/3
+```
+
+## An animated transition {auto-animate="true"}
+
+```{awk}
+#| echo: TRUE
+#| eval: FALSE
+#!/bin/awk -f
+BEGIN{
+	$
+	"date +%N"|getline rseed;srand(rseed);close("date +%N");print 
+rand()
+}
+```
+
+## An animated transition {auto-animate="true"}
+
+```{awk}
+#| echo: TRUE
+#| eval: FALSE
+#!/bin/awk -f
+BEGIN{srand() }
+{ lines[++d]=$0 }
+END{
+    while (1){
+    if (e==d) {break}
+        RANDOM = int(1 + rand() * d)
+        if ( RANDOM in lines  ){
+            print lines[RANDOM]
+            delete lines[RANDOM]
+            ++e
+        }
+    }
+}
+```
+
+## Code Highlighting
+
+-   Highlight a specific line of code
+
+```{awk}
+#| echo: TRUE
+#| eval: FALSE
+#| code-line-numbers: "5|6|7-11"
+#!/bin/awk -f
+BEGIN{srand() }
+{ lines[++d]=$0 }
+END{
+    while (1){
+    if (e==d) {break}
+        RANDOM = int(1 + rand() * d)
+        if ( RANDOM in lines  ){
+            print lines[RANDOM]
+            delete lines[RANDOM]
+            ++e
+        }
+    }
+}
+```
+
+## Tabsets
+
+::: panel-tabset
+### R Code
+
+-   This is the code
+
+```{r}
+#| echo: TRUE
+#| eval: FALSE
+library(tidyverse)
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy, color = class))
+```
+
+### R Figure
+
+-   This is the figure!
+
+```{r}
+library(tidyverse)
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy, color = class))
+```
+:::
