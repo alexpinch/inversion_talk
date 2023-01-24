@@ -1,121 +1,86 @@
 ---
 title: "Modelling locally adaptive inversions"
 author: Alex Pinch
-subtitle: My work so far
-date: 01/27/2023
+date: 01/30/2023
 format: 
   revealjs:
     standalone: true
-    theme: default
+    theme: [default, custom.scss]
     progress: true
 incremental: false
 highlight-style: a11y
 ---
 
-## SLiM in all it's glory
-![](slim.png){width="600"}
+## 
 
-## A slide with columns and an image
+![](textbook_photo.png){width="200"}
+
+## A short and sweet explanation of inversions
 
 ::: columns
-::: {.column width="65%"}
--   Some text beside an image
--   [alexpinch.github.io](https://alexpinch.github.io)
+::: {.column width="50%"}
+-   Chromosomal inversions prevent recombination
+-   How?
 :::
 
-::: {.column width="35%"}
-![](me.jpg){width="200"}
+::: {.column width="50%"}
+![](inversion_graphic.png){width="400"}
+
+Fig. 2, Kirkpatrick 2010 PLoS BIOLOGY
 :::
 :::
 
-## Some code blocks
+## Why how we code recombination is important
 
-```{r}
-print("A displayed R print statement, rendered in Quarto")
-print("150 + 243/3 = ")
-150 + 243/3
-```
+-   Preventing recombination is the sole driver for maintaining an inversion over generations (citation)
 
-## An animated transition {auto-animate="true"}
+## How we code recombination
 
-```{awk}
-#| echo: TRUE
-#| eval: FALSE
-#!/bin/awk -f
-BEGIN{
-	$
-	"date +%N"|getline rseed;srand(rseed);close("date +%N");print 
-rand()
+```{C}
+//| echo: TRUE
+//| eval: FALSE
+//| code-line-numbers: "6-8|10-12|14-18|13-11"
+recombination() {
+  
+  // Search both chromosomes of an individual for the inversion marker mutation
+	gm1 = genome1.containsMarkerMutation(m2, invStart);
+	gm2 = genome2.containsMarkerMutation(m2, invStart);
+	
+	if (!(gm1 | gm2)) { // If neither chromosomes have the inversion...
+		return F; // Keep breakpoints where they are, return false (recombination proceeds normally)
+	}
+	
+	inInv = (breakpoints > invStart) & (breakpoints <= invEnd);  // Check if the breakpoints are inside or outside the inversion
+	if (sum(inInv) % 2 == 0) { // Sum the breakpoints and divide to see if they are even
+		return F; // If they are even, return false (recombination proceeds normally)
+	}
+	
+	if (gm1 & gm2) { // If the homozygote is inverted...
+		left = (breakpoints == invStart); // and if the breakpoints are equal to the start and end of the inversion
+		right = (breakpoints == invEnd + 1);
+		// Sort the breakpoints
+		breakpoints = sort(c(breakpoints[!(left | right)], 
+			c(invStart, invEnd + 1)[c(sum(left) == 0, sum(right) == 0)]));
+		return T; // Recombination breakpoints have changed, return true (recombination is prevented)
+	} else { // Otherwise, the heterozygote is inverted: need to resample to get an even number of breakpoints
+		breakpoints = sim.chromosome.drawBreakpoints(individual);
+	}
+	
+	return T;
 }
 ```
 
-## An animated transition {auto-animate="true"}
+## A sense of the scale
 
-```{awk}
-#| echo: TRUE
-#| eval: FALSE
-#!/bin/awk -f
-BEGIN{srand() }
-{ lines[++d]=$0 }
-END{
-    while (1){
-    if (e==d) {break}
-        RANDOM = int(1 + rand() * d)
-        if ( RANDOM in lines  ){
-            print lines[RANDOM]
-            delete lines[RANDOM]
-            ++e
-        }
-    }
-}
-```
+-   This recombination function is called for every individual, in every population, every generation
+-   500 individuals \* 9 populations \* 100,000 generations = ...
+-   Need a server
 
-## Code Highlighting
-
--   Highlight a specific line of code
-
-```{awk}
-#| echo: TRUE
-#| eval: FALSE
-#| code-line-numbers: "5|6|7-11"
-#!/bin/awk -f
-BEGIN{srand() }
-{ lines[++d]=$0 }
-END{
-    while (1){
-    if (e==d) {break}
-        RANDOM = int(1 + rand() * d)
-        if ( RANDOM in lines  ){
-            print lines[RANDOM]
-            delete lines[RANDOM]
-            ++e
-        }
-    }
-}
-```
-
-## Tabsets
-
-::: panel-tabset
-### R Code
-
--   This is the code
-
-```{r}
-#| echo: TRUE
-#| eval: FALSE
-library(tidyverse)
-ggplot(data = mpg) +
-  geom_point(mapping = aes(x = displ, y = hwy, color = class))
-```
-
-### R Figure
-
--   This is the figure!
+## October Results
 
 ```{r}
 library(tidyverse)
-ggplot(data = mpg) +
+data <- # Read october data.csv
+ggplot(data) +
   geom_point(mapping = aes(x = displ, y = hwy, color = class))
 ```
-:::
