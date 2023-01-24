@@ -1,51 +1,37 @@
 [
   {
-    "objectID": "index.html#slim-in-all-its-glory",
-    "href": "index.html#slim-in-all-its-glory",
+    "objectID": "index.html#a-short-and-sweet-explanation-of-inversions",
+    "href": "index.html#a-short-and-sweet-explanation-of-inversions",
     "title": "Modelling locally adaptive inversions",
-    "section": "SLiM in all it’s glory",
-    "text": "SLiM in all it’s glory"
+    "section": "A short and sweet explanation of inversions",
+    "text": "A short and sweet explanation of inversions\n\n\n\nChromosomal inversions prevent recombination\nHow?\n\n\n Fig. 2, Kirkpatrick 2010 PLOS BIOLOGY"
   },
   {
-    "objectID": "index.html#a-slide-with-columns-and-an-image",
-    "href": "index.html#a-slide-with-columns-and-an-image",
+    "objectID": "index.html#why-how-we-code-recombination-is-important",
+    "href": "index.html#why-how-we-code-recombination-is-important",
     "title": "Modelling locally adaptive inversions",
-    "section": "A slide with columns and an image",
-    "text": "A slide with columns and an image\n\n\n\nSome text beside an image\nalexpinch.github.io"
+    "section": "Why how we code recombination is important",
+    "text": "Why how we code recombination is important\n\nPreventing recombination is the sole driver for maintaining an inversion over generations (citation)"
   },
   {
-    "objectID": "index.html#some-code-blocks",
-    "href": "index.html#some-code-blocks",
+    "objectID": "index.html#how-we-code-recombination",
+    "href": "index.html#how-we-code-recombination",
     "title": "Modelling locally adaptive inversions",
-    "section": "Some code blocks",
-    "text": "Some code blocks\n\n\n[1] \"A displayed R print statement, rendered in Quarto\"\n\n\n[1] \"150 + 243/3 = \"\n\n\n[1] 231"
+    "section": "How we code recombination",
+    "text": "How we code recombination"
   },
   {
-    "objectID": "index.html#an-animated-transition",
-    "href": "index.html#an-animated-transition",
+    "objectID": "index.html#a-sense-of-the-scale",
+    "href": "index.html#a-sense-of-the-scale",
     "title": "Modelling locally adaptive inversions",
-    "section": "An animated transition",
-    "text": "An animated transition\n\n#!/bin/awk -f\nBEGIN{\n    $\n    \"date +%N\"|getline rseed;srand(rseed);close(\"date +%N\");print \nrand()\n}"
+    "section": "A sense of the scale",
+    "text": "A sense of the scale\n\nThis recombination function is called for every individual, in every population, every generation\n500 individuals * 9 populations * 100,000 generations = …\nNeed a server"
   },
   {
-    "objectID": "index.html#an-animated-transition-1",
-    "href": "index.html#an-animated-transition-1",
+    "objectID": "index.html#results",
+    "href": "index.html#results",
     "title": "Modelling locally adaptive inversions",
-    "section": "An animated transition",
-    "text": "An animated transition\n\n#!/bin/awk -f\nBEGIN{srand() }\n{ lines[++d]=$0 }\nEND{\n    while (1){\n    if (e==d) {break}\n        RANDOM = int(1 + rand() * d)\n        if ( RANDOM in lines  ){\n            print lines[RANDOM]\n            delete lines[RANDOM]\n            ++e\n        }\n    }\n}"
-  },
-  {
-    "objectID": "index.html#code-highlighting",
-    "href": "index.html#code-highlighting",
-    "title": "Modelling locally adaptive inversions",
-    "section": "Code Highlighting",
-    "text": "Code Highlighting\n\nHighlight a specific line of code\n\n\n#!/bin/awk -f\nBEGIN{srand() }\n{ lines[++d]=$0 }\nEND{\n    while (1){\n    if (e==d) {break}\n        RANDOM = int(1 + rand() * d)\n        if ( RANDOM in lines  ){\n            print lines[RANDOM]\n            delete lines[RANDOM]\n            ++e\n        }\n    }\n}"
-  },
-  {
-    "objectID": "index.html#tabsets",
-    "href": "index.html#tabsets",
-    "title": "Modelling locally adaptive inversions",
-    "section": "Tabsets",
-    "text": "Tabsets\n\nR CodeR Figure\n\n\n\nThis is the code\n\n\nlibrary(tidyverse)\nggplot(data = mpg) +\n  geom_point(mapping = aes(x = displ, y = hwy, color = class))\n\n\n\n\nThis is the figure!"
+    "section": "Results",
+    "text": "Results"
   }
 ]
