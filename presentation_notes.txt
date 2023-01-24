@@ -1,3 +1,0 @@
-Jan 30th meeting -> presentation on findings so far
-
-- Read papers on mutation rate, migration rate and chromosome length
