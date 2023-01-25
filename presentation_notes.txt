@@ -1,0 +1,30 @@
+
+Inversion Background
+- Short and sweet
+	What's an inversion, how we all know it (textbook figures)
+- Long and bitter
+	How inversions have come to dominate the literature landscape
+	All their important implications in speciation
+- Why is modelling critical?
+- What we hope to find
+
+SLiM Background
+- The necessity for SLiM
+- One big loop
+
+Our model
+- Generic overview of the model
+- What this model is NOT doing
+- Why how we code recombination is important
+- How we alter recombination/our recombination function
+(Aside) A sense of scale
+
+Results
+- October run
+- November run
+(Aside) Parameter hell
+
+Going forward
+- Flowchart of my roadblocks
+
+
