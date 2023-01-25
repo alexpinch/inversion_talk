@@ -13,74 +13,141 @@ highlight-style: a11y
 
 ## 
 
-![](textbook_photo.png){width="200"}
+![Fig. 8.10, Genetics: Analysis & Principles 7th Ed.](textbook_photo.png){width="50%"}
 
-## A short and sweet explanation of inversions
+## Short and sweet
 
-::: columns
-::: {.column width="50%"}
--   Chromosomal inversions prevent recombination
--   How?
-:::
+![Fig. 2, Kirkpatrick 2010, PLoS Biology](inversion_graphic.png){width="50%"}
 
-::: {.column width="50%"}
-![](inversion_graphic.png){width="400"}
+## Long and bitter
 
-Fig. 2, Kirkpatrick 2010 PLoS BIOLOGY
-:::
-:::
+-   The first inversion paper (Strutevant, 1921)
+-   How inversions drive speciation (Fuller et al., 2017)
+-   How inversions evolve (Kirkpatrick, 2010)
+
+## What can models tell us about inversions?
+
+-   Outline why models are critical
+
+## Hypothesis:
+-   Inversions that are locally advantageous will still accumulate more deleterious mutations over time
+-   
+
+## The necessity for SLiM
+
+-   Ben Haller's dream
+
+##  One big loop
+![SLiM Manual 2016](slim_functions.png){width="25%"}
+
+## A generic overview of the model
+
+-   At time = 0
+    -   Define a swathe of the chromosome by a start and end point variable
+    -   Give one individual two copies of a mutation at that start position
+    -   This mutation will flag an individual as having an inversion
+
+## A generic overview of the model
+
+-   Every generation:
+    -   Check every individual for that marker mutation, if found:
+        -   Suppress recombination and manually alter fitness
+
+## What this model is NOT doing
+
+-   It is not actually inverting a section of a simulated chromosome
+-   Instead, we define the length and place a marker to keep track of it, changing the breakpoints and fitness manually
 
 ## Why how we code recombination is important
 
 -   Preventing recombination is the sole driver for maintaining an inversion over generations (citation)
 
-## How we code recombination
+## How we alter recombination
 
-```{C}
-//| echo: TRUE
-//| eval: FALSE
-//| code-line-numbers: "6-8|10-12|14-18|13-11"
+-   In heterozygotes, recombination must be prevented
+-   In homozygotes, the breakpoints must be changed and told where the inversion is
+
+## Editing SLiM's recombination
+
+-   SLiM does recombination automatically, so you must define a function named 'recombination' to supersede it 
+-   If this function returns false, SLiM's normal recombinaton function takes over 
+-   If this function returns true, SLiM considers recombination over and continues the loop
+
+## Our recombination function
+![](recombination_flowchart.jpg){width="50%"}
+
+## Our recombination function
+
+```{R}
+#| echo: TRUE
+#| eval: FALSE
+#| code-line-numbers: "2-4|5-8|9-10|11-14|15-19|20-25|26-30"
 recombination() {
-  
-  // Search both chromosomes of an individual for the inversion marker mutation
+  # Search both chromosomes of an individual for the inversion
 	gm1 = genome1.containsMarkerMutation(m2, invStart);
 	gm2 = genome2.containsMarkerMutation(m2, invStart);
-	
-	if (!(gm1 | gm2)) { // If neither chromosomes have the inversion...
-		return F; // Keep breakpoints where they are, return false (recombination proceeds normally)
+	# If neither chromosomes have the inversion, return false
+	if (!(gm1 | gm2)) { 
+		return(F)
 	}
-	
-	inInv = (breakpoints > invStart) & (breakpoints <= invEnd);  // Check if the breakpoints are inside or outside the inversion
-	if (sum(inInv) % 2 == 0) { // Sum the breakpoints and divide to see if they are even
-		return F; // If they are even, return false (recombination proceeds normally)
+	# Check if the breakpoints are outside the inversion
+	inInv = (breakpoints > invStart) & (breakpoints <= invEnd);  
+	# If their sum is even, return false
+	if (sum(inInv) %% 2 == 0) { 
+		return(F)
 	}
-	
-	if (gm1 & gm2) { // If the homozygote is inverted...
-		left = (breakpoints == invStart); // and if the breakpoints are equal to the start and end of the inversion
+	# If both chromosomes have the inversion (is homozygous)...
+	if (gm1 & gm2) {
+		left = (breakpoints == invStart); 
 		right = (breakpoints == invEnd + 1);
-		// Sort the breakpoints
+		# Change the recombination breakpoints
 		breakpoints = sort(c(breakpoints[!(left | right)], 
 			c(invStart, invEnd + 1)[c(sum(left) == 0, sum(right) == 0)]));
-		return T; // Recombination breakpoints have changed, return true (recombination is prevented)
-	} else { // Otherwise, the heterozygote is inverted: need to resample to get an even number of breakpoints
+		# Return true to make sure new breakpoints are preserved
+		return(T) 
+	} 
+	# Otherwise, it is not heterozygous
+	else { 
 		breakpoints = sim.chromosome.drawBreakpoints(individual);
 	}
-	
-	return T;
+	# Unless previously stated, always return this function true
+	return(T)
 }
 ```
 
-## A sense of the scale
+## A sense of scale
 
 -   This recombination function is called for every individual, in every population, every generation
--   500 individuals \* 9 populations \* 100,000 generations = ...
--   Need a server
+-   500 individuals \* 9 populations \* 100 000 generations \* 1000 iterations of this script = 450 billion times
 
-## October Results
+## October run results
+-   Average fitness vs. genotype per region plot
 
 ```{r}
 library(tidyverse)
-data <- # Read october data.csv
-ggplot(data) +
+ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy, color = class))
 ```
+
+## November run results
+
+## Parameter hell
+-   Screenshot of model_final, model_final_final
+-   Why this mindset is bad
+
+## Flowchart of my roadblocks
+-   Heaven graphic at the end
+-   How do we get there?
+
+## 
+```{R}
+#| echo: TRUE
+#| eval: FALSE
+recombination() {
+  
+}
+```
+
+## Questions
+
+## References
