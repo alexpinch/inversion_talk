@@ -28,6 +28,13 @@
     "text": "What can models tell us about inversions?\n\nOutline why models are critical"
   },
   {
+    "objectID": "index.html#what-we-hope-to-find",
+    "href": "index.html#what-we-hope-to-find",
+    "title": "Modelling locally adaptive inversions",
+    "section": "What we hope to find",
+    "text": "What we hope to find\n\nInversions that are locally advantageous will still accumulate more deleterious mutations over time"
+  },
+  {
     "objectID": "index.html#the-necessity-for-slim",
     "href": "index.html#the-necessity-for-slim",
     "title": "Modelling locally adaptive inversions",
@@ -95,21 +102,21 @@
     "href": "index.html#our-recombination-function-1",
     "title": "Modelling locally adaptive inversions",
     "section": "Our recombination function",
-    "text": "Our recombination function\n\nrecombination() {\n  # Search both chromosomes of an individual for the inversion\n    gm1 = genome1.containsMarkerMutation(m2, invStart);\n    gm2 = genome2.containsMarkerMutation(m2, invStart);\n    # If neither chromosomes have the inversion, return false\n    if (!(gm1 | gm2)) { \n        return(F)\n    }\n    # Check if the breakpoints are outside the inversion\n    inInv = (breakpoints > invStart) & (breakpoints <= invEnd);  \n    # If their sum is even, return false\n    if (sum(inInv) %% 2 == 0) { \n        return(F)\n    }\n    # If both chromosomes have the inversion (is homozygous)...\n    if (gm1 & gm2) {\n        left = (breakpoints == invStart); \n        right = (breakpoints == invEnd + 1);\n        # Change the recombination breakpoints\n        breakpoints = sort(c(breakpoints[!(left | right)], \n            c(invStart, invEnd + 1)[c(sum(left) == 0, sum(right) == 0)]));\n        # Return true to make sure new breakpoints are preserved\n        return(T) \n    } \n    # Otherwise, it is not heterozygous\n    else { \n        breakpoints = sim.chromosome.drawBreakpoints(individual);\n    }\n    # Unless previously stated, always return this function true\n    return(T)\n}"
+    "text": "Our recombination function\n\nrecombination() {\n  # Search both chromosomes of an individual for the inversion\n    gm1 = genome1.containsMarkerMutation(m2, invStart);\n    gm2 = genome2.containsMarkerMutation(m2, invStart);\n    # If neither chromosomes have the inversion, return false\n    if (!(gm1 | gm2)) { \n        return(F)\n    }\n    # Check if the breakpoints are outside the inversion\n    inInv = (breakpoints > invStart) & (breakpoints <= invEnd);  \n    # If their sum is even, return false\n    if (sum(inInv) %% 2 == 0) { \n        return(F)\n    }\n    # If both chromosomes have the inversion (is homozygous)...\n    if (gm1 & gm2) {\n        left = (breakpoints == invStart); \n        right = (breakpoints == invEnd + 1);\n        # Change the recombination breakpoints\n        breakpoints = sort(c(breakpoints[!(left | right)], \n            c(invStart, invEnd + 1)[c(sum(left) == 0, sum(right) == 0)]));\n        # Return true to make sure new breakpoints are preserved\n        return(T) \n    } \n    # If none of the above, it is heterozygous\n    else { \n      # Draw new breakpoints and return true to preserve them\n        breakpoints = sim.chromosome.drawBreakpoints(individual);\n    }\n    return(T)\n}"
   },
   {
-    "objectID": "index.html#a-sense-of-scale",
-    "href": "index.html#a-sense-of-scale",
+    "objectID": "index.html#aside-a-sense-of-scale",
+    "href": "index.html#aside-a-sense-of-scale",
     "title": "Modelling locally adaptive inversions",
-    "section": "A sense of scale",
-    "text": "A sense of scale\n\nThis recombination function is called for every individual, in every population, every generation\n500 individuals * 9 populations * 100 000 generations * 1000 iterations of this script = 450 billion times"
+    "section": "(Aside) A sense of scale",
+    "text": "(Aside) A sense of scale\n\nThis recombination function is called for every individual, in every population, every generation\n500 individuals * 9 populations * 100 000 generations * 1000 iterations of this script = 450 billion times"
   },
   {
     "objectID": "index.html#october-run-results",
     "href": "index.html#october-run-results",
     "title": "Modelling locally adaptive inversions",
     "section": "October run results",
-    "text": "October run results"
+    "text": "October run results\n\nAverage fitness vs. genotype per region plot"
   },
   {
     "objectID": "index.html#november-run-results",
@@ -119,11 +126,11 @@
     "text": "November run results"
   },
   {
-    "objectID": "index.html#parameter-hell",
-    "href": "index.html#parameter-hell",
+    "objectID": "index.html#aside-parameter-hell",
+    "href": "index.html#aside-parameter-hell",
     "title": "Modelling locally adaptive inversions",
-    "section": "Parameter hell",
-    "text": "Parameter hell\n\nScreenshot of model_final, model_final_final\nWhy this mindset is bad"
+    "section": "(Aside) Parameter hell",
+    "text": "(Aside) Parameter hell\n\nScreenshot of model_final, model_final_final\nWhy this mindset is bad"
   },
   {
     "objectID": "index.html#flowchart-of-my-roadblocks",
@@ -145,12 +152,5 @@
     "title": "Modelling locally adaptive inversions",
     "section": "Questions",
     "text": "Questions"
-  },
-  {
-    "objectID": "index.html#references",
-    "href": "index.html#references",
-    "title": "Modelling locally adaptive inversions",
-    "section": "References",
-    "text": "References"
   }
 ]

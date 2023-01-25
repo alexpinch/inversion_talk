@@ -29,15 +29,16 @@ highlight-style: a11y
 
 -   Outline why models are critical
 
-## Hypothesis:
+## What we hope to find
+
 -   Inversions that are locally advantageous will still accumulate more deleterious mutations over time
--   
 
 ## The necessity for SLiM
 
 -   Ben Haller's dream
 
-##  One big loop
+## One big loop
+
 ![SLiM Manual 2016](slim_functions.png){width="25%"}
 
 ## A generic overview of the model
@@ -69,11 +70,12 @@ highlight-style: a11y
 
 ## Editing SLiM's recombination
 
--   SLiM does recombination automatically, so you must define a function named 'recombination' to supersede it 
--   If this function returns false, SLiM's normal recombinaton function takes over 
+-   SLiM does recombination automatically, so you must define a function named 'recombination' to supersede it
+-   If this function returns false, SLiM's normal recombinaton function takes over
 -   If this function returns true, SLiM considers recombination over and continues the loop
 
 ## Our recombination function
+
 ![](recombination_flowchart.jpg){width="50%"}
 
 ## Our recombination function
@@ -81,7 +83,7 @@ highlight-style: a11y
 ```{R}
 #| echo: TRUE
 #| eval: FALSE
-#| code-line-numbers: "2-4|5-8|9-10|11-14|15-19|20-25|26-30"
+#| code-line-numbers: "2-4|5-8|9-10|11-14|15-18|19-24|25-31"
 recombination() {
   # Search both chromosomes of an individual for the inversion
 	gm1 = genome1.containsMarkerMutation(m2, invStart);
@@ -106,22 +108,23 @@ recombination() {
 		# Return true to make sure new breakpoints are preserved
 		return(T) 
 	} 
-	# Otherwise, it is not heterozygous
+	# If none of the above, it is heterozygous
 	else { 
+	  # Draw new breakpoints and return true to preserve them
 		breakpoints = sim.chromosome.drawBreakpoints(individual);
 	}
-	# Unless previously stated, always return this function true
 	return(T)
 }
 ```
 
-## A sense of scale
+## (Aside) A sense of scale
 
 -   This recombination function is called for every individual, in every population, every generation
 -   500 individuals \* 9 populations \* 100 000 generations \* 1000 iterations of this script = 450 billion times
 
 ## October run results
--   Average fitness vs. genotype per region plot
+
+-   Average fitness vs. genotype per region plot\
 
 ```{r}
 library(tidyverse)
@@ -131,15 +134,18 @@ ggplot(data = mpg) +
 
 ## November run results
 
-## Parameter hell
+## (Aside) Parameter hell
+
 -   Screenshot of model_final, model_final_final
 -   Why this mindset is bad
 
 ## Flowchart of my roadblocks
+
 -   Heaven graphic at the end
 -   How do we get there?
 
 ## 
+
 ```{R}
 #| echo: TRUE
 #| eval: FALSE
@@ -149,5 +155,3 @@ recombination() {
 ```
 
 ## Questions
-
-## References
