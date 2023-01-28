@@ -1,12 +1,22 @@
+------------------
 
 Inversion Background
 - Short and sweet
-	What's an inversion, how we all know it (textbook figures)
+	An inversion is a section of a chromosome where all the genes have been flipped
 - Long and bitter
-	How inversions have come to dominate the literature landscape
-	All their important implications in speciation
+	Inversions were popular to look at in the 1920s/30s looking at full chromosomes
+	Guessed that they would have an effect on recombination!! Turned out to be right
+	Rebirth of interest since the late 2000s, especially with NGS
+	In 2005 found 1500 inversions! (In the 20s/30s could only identify ~9
+- How/why do they evolve?
+	If an inverted chromosomes has (almost) the same genetic information as an inverted 	one, what could cause it to spread through a population?
+	Probably local adaptation
 - Why is modelling critical?
 - What we hope to find
+
+
+
+--------------
 
 SLiM Background
 - The necessity for SLiM
@@ -18,6 +28,8 @@ Our model
 - Why how we code recombination is important
 - How we alter recombination/our recombination function
 (Aside) A sense of scale
+
+---------
 
 Results
 - October run
