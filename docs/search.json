@@ -1,155 +1,190 @@
 [
   {
+    "objectID": "index.html#modelling-locally-adaptive-inversions",
+    "href": "index.html#modelling-locally-adaptive-inversions",
+    "title": "",
+    "section": "Modelling locally adaptive inversions",
+    "text": "Modelling locally adaptive inversions\n\n\n\n\nAlex Pinch, Jan. 30 2023"
+  },
+  {
     "objectID": "index.html#section",
     "href": "index.html#section",
-    "title": "Modelling locally adaptive inversions",
+    "title": "",
     "section": "",
-    "text": "Fig. 8.10, Genetics: Analysis & Principles 7th Ed."
+    "text": "Fig. 8.10, Brooker 7th Ed.\nProbably everyone’s first interaction with a chromosomal inversion. During recombination, chromosomal rearrangements like deletions can occur, but whole sections can also get flipped around. But, inversions are special. It’s not like an insertion or deletion where the number of genes changes, and they aren’t always super deleterious, they stick around! There’s lots of interesting implications from the broader perspective of evolution. How they persist in populations is a bit puzzling, and they are suspected to drive speciation, and come to control important phenotypes like in Heliconious butterflies."
   },
   {
-    "objectID": "index.html#short-and-sweet",
-    "href": "index.html#short-and-sweet",
-    "title": "Modelling locally adaptive inversions",
-    "section": "Short and sweet",
-    "text": "Short and sweet\n\nFig. 2, Kirkpatrick 2010, PLoS Biology"
+    "objectID": "index.html#recombination",
+    "href": "index.html#recombination",
+    "title": "",
+    "section": "Recombination",
+    "text": "Recombination\n\nFig. 2, Kirkpatrick 2010 (Modified)\nA chromosome breaks at two points and crossover and find their homologous pair"
   },
   {
-    "objectID": "index.html#long-and-bitter",
-    "href": "index.html#long-and-bitter",
-    "title": "Modelling locally adaptive inversions",
-    "section": "Long and bitter",
-    "text": "Long and bitter\n\nThe first inversion paper (Strutevant, 1921)\nHow inversions drive speciation (Fuller et al., 2017)\nHow inversions evolve (Kirkpatrick, 2010)"
+    "objectID": "index.html#stopping-recombination",
+    "href": "index.html#stopping-recombination",
+    "title": "",
+    "section": "Stopping recombination",
+    "text": "Stopping recombination\n\nFig. 2, Kirkpatrick 2010\nWhen the offspring is heterozygous for an inversion, recombination does not occur as a broken segment cannot find their homologous pair"
   },
   {
-    "objectID": "index.html#what-can-models-tell-us-about-inversions",
-    "href": "index.html#what-can-models-tell-us-about-inversions",
-    "title": "Modelling locally adaptive inversions",
-    "section": "What can models tell us about inversions?",
-    "text": "What can models tell us about inversions?\n\nOutline why models are critical"
+    "objectID": "index.html#why-are-inversions-important",
+    "href": "index.html#why-are-inversions-important",
+    "title": "",
+    "section": "Why are inversions important?",
+    "text": "Why are inversions important?\n\n15-20 years ago, interest resurged, inversions are way more prevalent than previously thought, on the order of 1000s (Kirkpatrick, 2010)\nThey can persist through populations and homozygotes can accumulate more mutations over time (Huang, 2022)\nStill puzzling how they persist in populations over time\nIf genetic information is almost identical, how do they spread?\n\n\nINVERSIONS: Why are they important?\nStrutevant described the first inversions 100 years ago, and inferenced that this would stop recombination in heterozygotes but not homozygotes. Next generation sequenced allowed the discovery of tons more structural rearrangements, which has generated more interest. Interesting question in evolution: if it has almost the same genetic information as it’s not-inverted counterpart, how can it spread through a population?"
   },
   {
-    "objectID": "index.html#what-we-hope-to-find",
-    "href": "index.html#what-we-hope-to-find",
-    "title": "Modelling locally adaptive inversions",
-    "section": "What we hope to find",
-    "text": "What we hope to find\n\nInversions that are locally advantageous will still accumulate more deleterious mutations over time"
+    "objectID": "index.html#local-adaptation-theory",
+    "href": "index.html#local-adaptation-theory",
+    "title": "",
+    "section": "Local adaptation theory",
+    "text": "Local adaptation theory\n\nInversions can show geographical variation (Krimbas and Powell, 1992)\nWhich means that they might be locally adaptive\nIf an inversion traps alleles that become ecologically favoured, this could explain why they persist\n\n\nINVERSIONS: Why are they important? An individual could have (trapped in their inversion) alleles/genes that have been selected out over time, but have just recently become ecologically favourable"
   },
   {
-    "objectID": "index.html#the-necessity-for-slim",
-    "href": "index.html#the-necessity-for-slim",
-    "title": "Modelling locally adaptive inversions",
-    "section": "The necessity for SLiM",
-    "text": "The necessity for SLiM\n\nBen Haller’s dream"
+    "objectID": "index.html#our-idea",
+    "href": "index.html#our-idea",
+    "title": "",
+    "section": "Our idea",
+    "text": "Our idea\n\nIndividuals with a locally advantageous inversion will have an increase in mutational load, to the point where the advantage is lost"
   },
   {
-    "objectID": "index.html#one-big-loop",
-    "href": "index.html#one-big-loop",
-    "title": "Modelling locally adaptive inversions",
-    "section": "One big loop",
-    "text": "One big loop\n\nSLiM Manual 2016"
+    "objectID": "index.html#how-were-testing-it",
+    "href": "index.html#how-were-testing-it",
+    "title": "",
+    "section": "How we’re testing it",
+    "text": "How we’re testing it\n\nBy making a model that introduces a locally adaptive inversion across several populations we can keep track of fitness, number of mutations per genotype\nCan run the model as many times as we want to find trends\n\n\nBy making a program that introduces an inversion, preventing recombination and giving inversion-carrying individuals a range of fitness benefits depending on which population they are from, we can make it output key data like fitness values, number of deleterious mutations and its inversion genotype. Others have modeled the long-term fate of inversions, and there’s lots of ways of going about this. I’ll try and point out where things could or have been changed."
   },
   {
-    "objectID": "index.html#a-generic-overview-of-the-model",
-    "href": "index.html#a-generic-overview-of-the-model",
-    "title": "Modelling locally adaptive inversions",
-    "section": "A generic overview of the model",
-    "text": "A generic overview of the model\n\nAt time = 0\n\nDefine a swathe of the chromosome by a start and end point variable\nGive one individual two copies of a mutation at that start position\nThis mutation will flag an individual as having an inversion"
+    "objectID": "index.html#how-inversions-spread",
+    "href": "index.html#how-inversions-spread",
+    "title": "",
+    "section": "How inversions spread",
+    "text": "How inversions spread\n\nFig. 1, Faria et al. 2019 (Modified)\nA simplified outline for the different outcomes of an inversion"
   },
   {
-    "objectID": "index.html#a-generic-overview-of-the-model-1",
-    "href": "index.html#a-generic-overview-of-the-model-1",
-    "title": "Modelling locally adaptive inversions",
-    "section": "A generic overview of the model",
-    "text": "A generic overview of the model\n\nEvery generation:\n\nCheck every individual for that marker mutation, if found:\n\nSuppress recombination and manually alter fitness"
+    "objectID": "index.html#how-inversions-spread-1",
+    "href": "index.html#how-inversions-spread-1",
+    "title": "",
+    "section": "How inversions spread",
+    "text": "How inversions spread\n\nFig. 1, Faria et al., 2019 (Modified)\nRoughly how inversions accumulate, and the current thinking for how"
   },
   {
-    "objectID": "index.html#what-this-model-is-not-doing",
-    "href": "index.html#what-this-model-is-not-doing",
-    "title": "Modelling locally adaptive inversions",
-    "section": "What this model is NOT doing",
-    "text": "What this model is NOT doing\n\nIt is not actually inverting a section of a simulated chromosome\nInstead, we define the length and place a marker to keep track of it, changing the breakpoints and fitness manually"
+    "objectID": "index.html#a-slimtroduction",
+    "href": "index.html#a-slimtroduction",
+    "title": "",
+    "section": "A SLiMtroduction",
+    "text": "A SLiMtroduction\n\nWe built a forward-genetics simulation using SLiM\nSLiM (Selection on Linked Mutations) was developed by Ben Haller and Phillip Messer at Cornell\nSLiM uses a basic framework for modelling individuals over generations\nComputes at the gene level, not concerned with base pairs\nUses a proprietary programming language built to be like R, but as fast as C"
   },
   {
-    "objectID": "index.html#why-how-we-code-recombination-is-important",
-    "href": "index.html#why-how-we-code-recombination-is-important",
-    "title": "Modelling locally adaptive inversions",
-    "section": "Why how we code recombination is important",
-    "text": "Why how we code recombination is important\n\nPreventing recombination is the sole driver for maintaining an inversion over generations (citation)"
+    "objectID": "index.html#a-slimtroduction-1",
+    "href": "index.html#a-slimtroduction-1",
+    "title": "",
+    "section": "A SLiMtroduction",
+    "text": "A SLiMtroduction\n\nHaller, 2016\nSLiM is one big loop, I’m pointing out the recombination function here because that’s a pretty critical part for us and our model"
   },
   {
-    "objectID": "index.html#how-we-alter-recombination",
-    "href": "index.html#how-we-alter-recombination",
-    "title": "Modelling locally adaptive inversions",
-    "section": "How we alter recombination",
-    "text": "How we alter recombination\n\nIn heterozygotes, recombination must be prevented\nIn homozygotes, the breakpoints must be changed and told where the inversion is"
+    "objectID": "index.html#our-model",
+    "href": "index.html#our-model",
+    "title": "",
+    "section": "Our model",
+    "text": "Our model\n\n\n\nAt time = 0\n\nDefine a start and end point variable for the inversion,\nGive one individual two copies of a mutation at that start position, will serve as a marker\nDefine a grid of subpopulations and establish a fitness gradient for inversion-carrying individuals"
   },
   {
-    "objectID": "index.html#editing-slims-recombination",
-    "href": "index.html#editing-slims-recombination",
-    "title": "Modelling locally adaptive inversions",
-    "section": "Editing SLiM’s recombination",
-    "text": "Editing SLiM’s recombination\n\nSLiM does recombination automatically, so you must define a function named ‘recombination’ to supersede it\nIf this function returns false, SLiM’s normal recombinaton function takes over\nIf this function returns true, SLiM considers recombination over and continues the loop"
+    "objectID": "index.html#our-model-1",
+    "href": "index.html#our-model-1",
+    "title": "",
+    "section": "Our model",
+    "text": "Our model\n\nEvery generation:\n\nCheck every individual for that marker mutation\nIf found: suppress recombination and manually alter fitness\nIndividuals have a chance to migrate to another subpopulation, where their inversion will either help or hurt them"
   },
   {
-    "objectID": "index.html#our-recombination-function",
-    "href": "index.html#our-recombination-function",
-    "title": "Modelling locally adaptive inversions",
-    "section": "Our recombination function",
-    "text": "Our recombination function"
+    "objectID": "index.html#our-model-2",
+    "href": "index.html#our-model-2",
+    "title": "",
+    "section": "Our model",
+    "text": "Our model\n\nWhat this model is not doing:\n\nIt is not actually inverting a section of a simulated chromosome\nInstead, we define the length and place a marker to keep track of it, changing the breakpoints and fitness manually\nIt is not keeping track of base pairs, codons, amino acids, proteins…"
   },
   {
-    "objectID": "index.html#our-recombination-function-1",
-    "href": "index.html#our-recombination-function-1",
-    "title": "Modelling locally adaptive inversions",
-    "section": "Our recombination function",
-    "text": "Our recombination function\n\nrecombination() {\n  # Search both chromosomes of an individual for the inversion\n    gm1 = genome1.containsMarkerMutation(m2, invStart);\n    gm2 = genome2.containsMarkerMutation(m2, invStart);\n    # If neither chromosomes have the inversion, return false\n    if (!(gm1 | gm2)) { \n        return(F)\n    }\n    # Check if the breakpoints are outside the inversion\n    inInv = (breakpoints > invStart) & (breakpoints <= invEnd);  \n    # If their sum is even, return false\n    if (sum(inInv) %% 2 == 0) { \n        return(F)\n    }\n    # If both chromosomes have the inversion (is homozygous)...\n    if (gm1 & gm2) {\n        left = (breakpoints == invStart); \n        right = (breakpoints == invEnd + 1);\n        # Change the recombination breakpoints\n        breakpoints = sort(c(breakpoints[!(left | right)], \n            c(invStart, invEnd + 1)[c(sum(left) == 0, sum(right) == 0)]));\n        # Return true to make sure new breakpoints are preserved\n        return(T) \n    } \n    # If none of the above, it is heterozygous\n    else { \n      # Draw new breakpoints and return true to preserve them\n        breakpoints = sim.chromosome.drawBreakpoints(individual);\n    }\n    return(T)\n}"
+    "objectID": "index.html#altering-recombination",
+    "href": "index.html#altering-recombination",
+    "title": "",
+    "section": "Altering recombination",
+    "text": "Altering recombination\n\nPreventing recombination is at the base of how inversions are physically maintained on the chromosome over time\nSo how we code recombination is integral to the model"
+  },
+  {
+    "objectID": "index.html#altering-recombination-1",
+    "href": "index.html#altering-recombination-1",
+    "title": "",
+    "section": "Altering recombination",
+    "text": "Altering recombination\n\nIn heterozygotes, recombination must be prevented\nIn homozygotes, the breakpoints must be changed and told where the inversion is"
+  },
+  {
+    "objectID": "index.html#altering-recombination-2",
+    "href": "index.html#altering-recombination-2",
+    "title": "",
+    "section": "Altering recombination",
+    "text": "Altering recombination\n\nSLiM does recombination automatically, so you must define a function named ‘recombination’ to supersede it\nIf this function returns false, SLiM’s normal recombinaton function takes over\nIf this function returns true, SLiM considers recombination over and continues the loop"
+  },
+  {
+    "objectID": "index.html#altering-recombination-3",
+    "href": "index.html#altering-recombination-3",
+    "title": "",
+    "section": "Altering recombination",
+    "text": "Altering recombination"
+  },
+  {
+    "objectID": "index.html#altering-recombination-4",
+    "href": "index.html#altering-recombination-4",
+    "title": "",
+    "section": "Altering recombination",
+    "text": "Altering recombination\n\nrecombination() {\n  # Search both chromosomes of an individual for the inversion\n    gm1 = genome1.containsMarkerMutation(m2, invStart);\n    gm2 = genome2.containsMarkerMutation(m2, invStart);\n    # If neither chromosomes have the inversion, return false\n    if (!(gm1 | gm2)) { \n        return(F)\n    }\n    # Check if the breakpoints are outside the inversion\n    inInv = (breakpoints > invStart) & (breakpoints <= invEnd);  \n    # If their sum is even, return false\n    if (sum(inInv) %% 2 == 0) { \n        return(F)\n    }\n    # If both chromosomes have the inversion (is homozygous)...\n    if (gm1 & gm2) {\n        left = (breakpoints == invStart); \n        right = (breakpoints == invEnd + 1);\n        # Change the recombination breakpoints\n        breakpoints = sort(c(breakpoints[!(left | right)], \n            c(invStart, invEnd + 1)[c(sum(left) == 0, sum(right) == 0)]));\n        # Return true to make sure new breakpoints are preserved\n        return(T) \n    } \n    # If none of the above, it is heterozygous\n    else { \n      # Draw new breakpoints and return true to preserve them\n        breakpoints = sim.chromosome.drawBreakpoints(individual);\n    }\n    return(T)\n}"
   },
   {
     "objectID": "index.html#aside-a-sense-of-scale",
     "href": "index.html#aside-a-sense-of-scale",
-    "title": "Modelling locally adaptive inversions",
+    "title": "",
     "section": "(Aside) A sense of scale",
     "text": "(Aside) A sense of scale\n\nThis recombination function is called for every individual, in every population, every generation\n500 individuals * 9 populations * 100 000 generations * 1000 iterations of this script = 450 billion times"
   },
   {
-    "objectID": "index.html#october-run-results",
-    "href": "index.html#october-run-results",
-    "title": "Modelling locally adaptive inversions",
-    "section": "October run results",
-    "text": "October run results\n\nAverage fitness vs. genotype per region plot"
-  },
-  {
-    "objectID": "index.html#november-run-results",
-    "href": "index.html#november-run-results",
-    "title": "Modelling locally adaptive inversions",
-    "section": "November run results",
-    "text": "November run results"
+    "objectID": "index.html#run-results",
+    "href": "index.html#run-results",
+    "title": "",
+    "section": "Run results",
+    "text": "Run results\n\nAverage fitness vs. genotype per region plot"
   },
   {
     "objectID": "index.html#aside-parameter-hell",
     "href": "index.html#aside-parameter-hell",
-    "title": "Modelling locally adaptive inversions",
+    "title": "",
     "section": "(Aside) Parameter hell",
     "text": "(Aside) Parameter hell\n\nScreenshot of model_final, model_final_final\nWhy this mindset is bad"
   },
   {
+    "objectID": "index.html#potential-future-results",
+    "href": "index.html#potential-future-results",
+    "title": "",
+    "section": "Potential future results",
+    "text": "Potential future results\n\nMutational load increases like found in Berdan et al. (2021)\nWhat this means"
+  },
+  {
     "objectID": "index.html#flowchart-of-my-roadblocks",
     "href": "index.html#flowchart-of-my-roadblocks",
-    "title": "Modelling locally adaptive inversions",
+    "title": "",
     "section": "Flowchart of my roadblocks",
     "text": "Flowchart of my roadblocks\n\nHeaven graphic at the end\nHow do we get there?"
   },
   {
     "objectID": "index.html#section-1",
     "href": "index.html#section-1",
-    "title": "Modelling locally adaptive inversions",
+    "title": "",
     "section": "",
     "text": "recombination() {\n  \n}"
   },
   {
     "objectID": "index.html#questions",
     "href": "index.html#questions",
-    "title": "Modelling locally adaptive inversions",
+    "title": "",
     "section": "Questions",
     "text": "Questions"
   }
