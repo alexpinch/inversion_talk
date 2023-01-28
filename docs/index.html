@@ -418,31 +418,23 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="recombination" class="slide level2">
-<h2>Recombination</h2>
-
-<img data-src="kirkpatrick_2010_1.png" style="width:50.0%" class="r-stretch quarto-figure-center"><p class="caption">Fig. 2, Kirkpatrick 2010 (Modified)</p><ul>
-<li>A chromosome breaks at two points and crossover and find their homologous pair</li>
-</ul>
-</section>
 <section id="stopping-recombination" class="slide level2">
 <h2>Stopping recombination</h2>
 
 <img data-src="kirkpatrick_2010.png" style="width:50.0%" class="r-stretch quarto-figure-center"><p class="caption">Fig. 2, Kirkpatrick 2010</p><ul>
-<li>When the offspring is heterozygous for an inversion, recombination does not occur as a broken segment cannot find their homologous pair</li>
+<li>When offspring are heterozygous for an inversion, recombination does not occur as a broken segment cannot find their homologous pair</li>
 </ul>
 </section>
 <section id="why-are-inversions-important" class="slide level2">
 <h2>Why are inversions important?</h2>
 <ul>
-<li>15-20 years ago, interest resurged, inversions are way more prevalent than previously thought, on the order of 1000s (Kirkpatrick, 2010)</li>
-<li>They can persist through populations and homozygotes can accumulate more mutations over time (Huang, 2022)</li>
-<li>Still puzzling how they persist in populations over time</li>
-<li>If genetic information is almost identical, how do they spread?</li>
+<li>15-20 years ago, found that inversions are way more prevalent than previously thought (Kirkpatrick, 2010)</li>
+<li>They can persist through populations and homozygotes can accumulate more deleterious mutations over time (Huang, 2022)</li>
+<li>Still puzzling how they stick around</li>
+<li>If genetic information is almost identical (only linear order changed), how do they spread?</li>
 </ul>
 <aside class="notes">
-<p>INVERSIONS: Why are they important?<br>
-Strutevant described the first inversions 100 years ago, and inferenced that this would stop recombination in heterozygotes but not homozygotes. Next generation sequenced allowed the discovery of tons more structural rearrangements, which has generated more interest. Interesting question in evolution: if it has almost the same genetic information as it’s not-inverted counterpart, how can it spread through a population?</p>
+<p>Strutevant described the first inversions 100 years ago, and inferenced that this would stop recombination in heterozygotes but not homozygotes. Next generation sequencing allowed the discovery of tons more structural rearrangements, which has generated more interest.It’s posed an interesting question in evolution: if it has almost the same genetic information as it’s not-inverted counterpart, how can it spread through a population? And we know that some inversion heterozygotes have a lower mutation load, like the work that Greg has done in sunflowers</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -459,11 +451,11 @@ Strutevant described the first inversions 100 years ago, and inferenced that thi
 <h2>Local adaptation theory</h2>
 <ul>
 <li>Inversions can show geographical variation (Krimbas and Powell, 1992)</li>
-<li>Which means that they might be locally adaptive</li>
-<li>If an inversion traps alleles that become ecologically favoured, this could explain why they persist</li>
+<li>This implies that they might be locally adaptive</li>
+<li>If an inversion traps genes that become ecologically favoured, this could explain why they persist</li>
 </ul>
 <aside class="notes">
-<p>INVERSIONS: Why are they important? An individual could have (trapped in their inversion) alleles/genes that have been selected out over time, but have just recently become ecologically favourable</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -523,7 +515,7 @@ Strutevant described the first inversions 100 years ago, and inferenced that thi
 <h2>How inversions spread</h2>
 
 <img data-src="faria_2019_2.jpg" style="width:50.0%" class="r-stretch quarto-figure-center"><p class="caption">Fig. 1, Faria et al., 2019 (Modified)</p><aside class="notes">
-<p>Roughly how inversions accumulate, and the current thinking for how</p>
+<p>In this case, locally advantageous alleles causes some population divergence, but when does the mutational load increase tip this balance?</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -541,9 +533,9 @@ Strutevant described the first inversions 100 years ago, and inferenced that thi
 <ul>
 <li>We built a forward-genetics simulation using SLiM</li>
 <li>SLiM (<strong>S</strong>election on <strong>Li</strong>nked <strong>M</strong>utations) was developed by Ben Haller and Phillip Messer at Cornell</li>
-<li>SLiM uses a basic framework for modelling individuals over generations</li>
+<li>SLiM provides a basic framework for modelling individuals over generations</li>
 <li>Computes at the gene level, not concerned with base pairs</li>
-<li>Uses a proprietary programming language built to be like R, but as fast as C</li>
+<li>Uses a proprietary programming language similar to R, but as fast as C</li>
 </ul>
 </section>
 <section id="a-slimtroduction-1" class="slide level2">
@@ -570,9 +562,12 @@ Strutevant described the first inversions 100 years ago, and inferenced that thi
 <ul>
 <li>At time = 0
 <ul>
-<li>Define a start and end point variable for the inversion,</li>
-<li>Give one individual two copies of a mutation at that start position, will serve as a marker</li>
 <li>Define a grid of subpopulations and establish a fitness gradient for inversion-carrying individuals</li>
+</ul></li>
+<li>After 50,000 generations:
+<ul>
+<li>Define a start and end point variable for the inversion</li>
+<li>Give one individual two copies of a mutation at that start position, will serve as a marker</li>
 </ul></li>
 </ul>
 </div><div class="column" style="width:40%;">
@@ -605,18 +600,12 @@ Strutevant described the first inversions 100 years ago, and inferenced that thi
 <section id="altering-recombination" class="slide level2">
 <h2>Altering recombination</h2>
 <ul>
-<li>Preventing recombination is at the base of how inversions are physically maintained on the chromosome over time</li>
-<li>So how we code recombination is integral to the model</li>
-</ul>
-</section>
-<section id="altering-recombination-1" class="slide level2">
-<h2>Altering recombination</h2>
-<ul>
+<li>Preventing recombination is at the base of how inversions are physically maintained on the chromosome over time, this is the crux of the model</li>
 <li>In heterozygotes, recombination must be prevented</li>
 <li>In homozygotes, the breakpoints must be changed and told where the inversion is</li>
 </ul>
 </section>
-<section id="altering-recombination-2" class="slide level2">
+<section id="altering-recombination-1" class="slide level2">
 <h2>Altering recombination</h2>
 <ul>
 <li>SLiM does recombination automatically, so you must define a function named ‘recombination’ to supersede it</li>
@@ -624,11 +613,11 @@ Strutevant described the first inversions 100 years ago, and inferenced that thi
 <li>If this function returns true, SLiM considers recombination over and continues the loop</li>
 </ul>
 </section>
-<section id="altering-recombination-3" class="slide level2">
+<section id="altering-recombination-2" class="slide level2">
 <h2>Altering recombination</h2>
 
-<img data-src="flowchart.jpeg" style="width:50.0%" class="r-stretch"></section>
-<section id="altering-recombination-4" class="slide level2">
+<img data-src="flowchart.jpeg" style="width:70.0%" class="r-stretch"></section>
+<section id="altering-recombination-3" class="slide level2">
 <h2>Altering recombination</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1" data-code-line-numbers="2-4|5-8|9-10|11-14|15-18|19-24|25-31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">recombination</span>() {</span>
@@ -671,44 +660,46 @@ Strutevant described the first inversions 100 years ago, and inferenced that thi
 <li>500 individuals * 9 populations * 100 000 generations * 1000 iterations of this script = 450 billion times</li>
 </ul>
 </section>
-<section id="run-results" class="slide level2">
-<h2>Run results</h2>
+<section id="preliminary-results" class="slide level2">
+<h2>Preliminary results</h2>
 <ul>
+<li>genotype_vs_fitness_allindividuals_allpops_allruns plot</li>
 <li>Average fitness vs.&nbsp;genotype per region plot</li>
+<li>mean_90_Ci plot</li>
 </ul>
 
 <img data-src="index_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
 <section id="aside-parameter-hell" class="slide level2">
 <h2>(Aside) Parameter hell</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
 <ul>
-<li>Screenshot of model_final, model_final_final</li>
-<li>Why this mindset is bad</li>
+<li>When modelling, the methods and results can be in constant flux</li>
+<li>For every new idea, can go back, tweak the model, and generate new data</li>
+<li>Avoid this mindset!! Hold strictly to the hypothesis…</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="parameters.png" style="width:100.0%"></p>
+</div>
+</div>
+</section>
+<section id="previous-work-in-modelling-inversions-in-slim" class="slide level2">
+<h2>Previous work in modelling inversions in SLiM</h2>
+<ul>
+<li>Berdan et al.&nbsp;(2021) observed a sharp decrease in fitness when heterozygote was favoured <img data-src="berdan_2021.jpg" alt="Fig. 2A-B, Berdan 2021 (Adapted)"></li>
 </ul>
 </section>
 <section id="potential-future-results" class="slide level2">
 <h2>Potential future results</h2>
-<ul>
-<li>Mutational load increases like found in Berdan et al.&nbsp;(2021)</li>
-<li>What this means <img data-src="berdan_2021.png" alt="Fig. 2A-B, Berdan 2021 (Adapted)"></li>
-</ul>
-</section>
-<section id="flowchart-of-my-roadblocks" class="slide level2">
-<h2>Flowchart of my roadblocks</h2>
-<ul>
-<li>Heaven graphic at the end</li>
-<li>How do we get there?</li>
-</ul>
-</section>
-<section id="section-1" class="slide level2">
-<h2></h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">recombination</span>() {</span>
-<span id="cb2-2"><a href="#cb2-2"></a>  </span>
-<span id="cb2-3"><a href="#cb2-3"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="questions" class="slide level2">
-<h2>Questions</h2>
+
+<img data-src="example_graph_1.jpeg" class="r-stretch"></section>
+<section id="potential-future-results-1" class="slide level2">
+<h2>Potential future results</h2>
+
+<img data-src="example_graph_2.jpeg" class="r-stretch"></section>
+<section id="thanks" class="slide level2">
+<h2>Thanks!</h2>
+<p>Questions?</p>
 
 <div class="footer footer-default">
 

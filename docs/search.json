@@ -14,32 +14,25 @@
     "text": "Fig. 8.10, Brooker 7th Ed.\nProbably everyone’s first interaction with a chromosomal inversion. During recombination, chromosomal rearrangements like deletions can occur, but whole sections can also get flipped around. But, inversions are special. It’s not like an insertion or deletion where the number of genes changes, and they aren’t always super deleterious, they stick around! There’s lots of interesting implications from the broader perspective of evolution. How they persist in populations is a bit puzzling, and they are suspected to drive speciation, and come to control important phenotypes like in Heliconious butterflies."
   },
   {
-    "objectID": "index.html#recombination",
-    "href": "index.html#recombination",
-    "title": "",
-    "section": "Recombination",
-    "text": "Recombination\n\nFig. 2, Kirkpatrick 2010 (Modified)\nA chromosome breaks at two points and crossover and find their homologous pair"
-  },
-  {
     "objectID": "index.html#stopping-recombination",
     "href": "index.html#stopping-recombination",
     "title": "",
     "section": "Stopping recombination",
-    "text": "Stopping recombination\n\nFig. 2, Kirkpatrick 2010\nWhen the offspring is heterozygous for an inversion, recombination does not occur as a broken segment cannot find their homologous pair"
+    "text": "Stopping recombination\n\nFig. 2, Kirkpatrick 2010\nWhen offspring are heterozygous for an inversion, recombination does not occur as a broken segment cannot find their homologous pair"
   },
   {
     "objectID": "index.html#why-are-inversions-important",
     "href": "index.html#why-are-inversions-important",
     "title": "",
     "section": "Why are inversions important?",
-    "text": "Why are inversions important?\n\n15-20 years ago, interest resurged, inversions are way more prevalent than previously thought, on the order of 1000s (Kirkpatrick, 2010)\nThey can persist through populations and homozygotes can accumulate more mutations over time (Huang, 2022)\nStill puzzling how they persist in populations over time\nIf genetic information is almost identical, how do they spread?\n\n\nINVERSIONS: Why are they important?\nStrutevant described the first inversions 100 years ago, and inferenced that this would stop recombination in heterozygotes but not homozygotes. Next generation sequenced allowed the discovery of tons more structural rearrangements, which has generated more interest. Interesting question in evolution: if it has almost the same genetic information as it’s not-inverted counterpart, how can it spread through a population?"
+    "text": "Why are inversions important?\n\n15-20 years ago, found that inversions are way more prevalent than previously thought (Kirkpatrick, 2010)\nThey can persist through populations and homozygotes can accumulate more deleterious mutations over time (Huang, 2022)\nStill puzzling how they stick around\nIf genetic information is almost identical (only linear order changed), how do they spread?\n\n\nStrutevant described the first inversions 100 years ago, and inferenced that this would stop recombination in heterozygotes but not homozygotes. Next generation sequencing allowed the discovery of tons more structural rearrangements, which has generated more interest.It’s posed an interesting question in evolution: if it has almost the same genetic information as it’s not-inverted counterpart, how can it spread through a population? And we know that some inversion heterozygotes have a lower mutation load, like the work that Greg has done in sunflowers"
   },
   {
     "objectID": "index.html#local-adaptation-theory",
     "href": "index.html#local-adaptation-theory",
     "title": "",
     "section": "Local adaptation theory",
-    "text": "Local adaptation theory\n\nInversions can show geographical variation (Krimbas and Powell, 1992)\nWhich means that they might be locally adaptive\nIf an inversion traps alleles that become ecologically favoured, this could explain why they persist\n\n\nINVERSIONS: Why are they important? An individual could have (trapped in their inversion) alleles/genes that have been selected out over time, but have just recently become ecologically favourable"
+    "text": "Local adaptation theory\n\nInversions can show geographical variation (Krimbas and Powell, 1992)\nThis implies that they might be locally adaptive\nIf an inversion traps genes that become ecologically favoured, this could explain why they persist"
   },
   {
     "objectID": "index.html#our-idea",
@@ -67,14 +60,14 @@
     "href": "index.html#how-inversions-spread-1",
     "title": "",
     "section": "How inversions spread",
-    "text": "How inversions spread\n\nFig. 1, Faria et al., 2019 (Modified)\nRoughly how inversions accumulate, and the current thinking for how"
+    "text": "How inversions spread\n\nFig. 1, Faria et al., 2019 (Modified)\nIn this case, locally advantageous alleles causes some population divergence, but when does the mutational load increase tip this balance?"
   },
   {
     "objectID": "index.html#a-slimtroduction",
     "href": "index.html#a-slimtroduction",
     "title": "",
     "section": "A SLiMtroduction",
-    "text": "A SLiMtroduction\n\nWe built a forward-genetics simulation using SLiM\nSLiM (Selection on Linked Mutations) was developed by Ben Haller and Phillip Messer at Cornell\nSLiM uses a basic framework for modelling individuals over generations\nComputes at the gene level, not concerned with base pairs\nUses a proprietary programming language built to be like R, but as fast as C"
+    "text": "A SLiMtroduction\n\nWe built a forward-genetics simulation using SLiM\nSLiM (Selection on Linked Mutations) was developed by Ben Haller and Phillip Messer at Cornell\nSLiM provides a basic framework for modelling individuals over generations\nComputes at the gene level, not concerned with base pairs\nUses a proprietary programming language similar to R, but as fast as C"
   },
   {
     "objectID": "index.html#a-slimtroduction-1",
@@ -88,7 +81,7 @@
     "href": "index.html#our-model",
     "title": "",
     "section": "Our model",
-    "text": "Our model\n\n\n\nAt time = 0\n\nDefine a start and end point variable for the inversion,\nGive one individual two copies of a mutation at that start position, will serve as a marker\nDefine a grid of subpopulations and establish a fitness gradient for inversion-carrying individuals"
+    "text": "Our model\n\n\n\nAt time = 0\n\nDefine a grid of subpopulations and establish a fitness gradient for inversion-carrying individuals\n\nAfter 50,000 generations:\n\nDefine a start and end point variable for the inversion\nGive one individual two copies of a mutation at that start position, will serve as a marker"
   },
   {
     "objectID": "index.html#our-model-1",
@@ -109,32 +102,25 @@
     "href": "index.html#altering-recombination",
     "title": "",
     "section": "Altering recombination",
-    "text": "Altering recombination\n\nPreventing recombination is at the base of how inversions are physically maintained on the chromosome over time\nSo how we code recombination is integral to the model"
+    "text": "Altering recombination\n\nPreventing recombination is at the base of how inversions are physically maintained on the chromosome over time, this is the crux of the model\nIn heterozygotes, recombination must be prevented\nIn homozygotes, the breakpoints must be changed and told where the inversion is"
   },
   {
     "objectID": "index.html#altering-recombination-1",
     "href": "index.html#altering-recombination-1",
     "title": "",
     "section": "Altering recombination",
-    "text": "Altering recombination\n\nIn heterozygotes, recombination must be prevented\nIn homozygotes, the breakpoints must be changed and told where the inversion is"
+    "text": "Altering recombination\n\nSLiM does recombination automatically, so you must define a function named ‘recombination’ to supersede it\nIf this function returns false, SLiM’s normal recombinaton function takes over\nIf this function returns true, SLiM considers recombination over and continues the loop"
   },
   {
     "objectID": "index.html#altering-recombination-2",
     "href": "index.html#altering-recombination-2",
     "title": "",
     "section": "Altering recombination",
-    "text": "Altering recombination\n\nSLiM does recombination automatically, so you must define a function named ‘recombination’ to supersede it\nIf this function returns false, SLiM’s normal recombinaton function takes over\nIf this function returns true, SLiM considers recombination over and continues the loop"
+    "text": "Altering recombination"
   },
   {
     "objectID": "index.html#altering-recombination-3",
     "href": "index.html#altering-recombination-3",
-    "title": "",
-    "section": "Altering recombination",
-    "text": "Altering recombination"
-  },
-  {
-    "objectID": "index.html#altering-recombination-4",
-    "href": "index.html#altering-recombination-4",
     "title": "",
     "section": "Altering recombination",
     "text": "Altering recombination\n\nrecombination() {\n  # Search both chromosomes of an individual for the inversion\n    gm1 = genome1.containsMarkerMutation(m2, invStart);\n    gm2 = genome2.containsMarkerMutation(m2, invStart);\n    # If neither chromosomes have the inversion, return false\n    if (!(gm1 | gm2)) { \n        return(F)\n    }\n    # Check if the breakpoints are outside the inversion\n    inInv = (breakpoints > invStart) & (breakpoints <= invEnd);  \n    # If their sum is even, return false\n    if (sum(inInv) %% 2 == 0) { \n        return(F)\n    }\n    # If both chromosomes have the inversion (is homozygous)...\n    if (gm1 & gm2) {\n        left = (breakpoints == invStart); \n        right = (breakpoints == invEnd + 1);\n        # Change the recombination breakpoints\n        breakpoints = sort(c(breakpoints[!(left | right)], \n            c(invStart, invEnd + 1)[c(sum(left) == 0, sum(right) == 0)]));\n        # Return true to make sure new breakpoints are preserved\n        return(T) \n    } \n    # If none of the above, it is heterozygous\n    else { \n      # Draw new breakpoints and return true to preserve them\n        breakpoints = sim.chromosome.drawBreakpoints(individual);\n    }\n    return(T)\n}"
@@ -147,45 +133,45 @@
     "text": "(Aside) A sense of scale\n\nThis recombination function is called for every individual, in every population, every generation\n500 individuals * 9 populations * 100 000 generations * 1000 iterations of this script = 450 billion times"
   },
   {
-    "objectID": "index.html#run-results",
-    "href": "index.html#run-results",
+    "objectID": "index.html#preliminary-results",
+    "href": "index.html#preliminary-results",
     "title": "",
-    "section": "Run results",
-    "text": "Run results\n\nAverage fitness vs. genotype per region plot"
+    "section": "Preliminary results",
+    "text": "Preliminary results\n\ngenotype_vs_fitness_allindividuals_allpops_allruns plot\nAverage fitness vs. genotype per region plot\nmean_90_Ci plot"
   },
   {
     "objectID": "index.html#aside-parameter-hell",
     "href": "index.html#aside-parameter-hell",
     "title": "",
     "section": "(Aside) Parameter hell",
-    "text": "(Aside) Parameter hell\n\nScreenshot of model_final, model_final_final\nWhy this mindset is bad"
+    "text": "(Aside) Parameter hell\n\n\n\nWhen modelling, the methods and results can be in constant flux\nFor every new idea, can go back, tweak the model, and generate new data\nAvoid this mindset!! Hold strictly to the hypothesis…"
+  },
+  {
+    "objectID": "index.html#previous-work-in-modelling-inversions-in-slim",
+    "href": "index.html#previous-work-in-modelling-inversions-in-slim",
+    "title": "",
+    "section": "Previous work in modelling inversions in SLiM",
+    "text": "Previous work in modelling inversions in SLiM\n\nBerdan et al. (2021) observed a sharp decrease in fitness when heterozygote was favoured"
   },
   {
     "objectID": "index.html#potential-future-results",
     "href": "index.html#potential-future-results",
     "title": "",
     "section": "Potential future results",
-    "text": "Potential future results\n\nMutational load increases like found in Berdan et al. (2021)\nWhat this means"
+    "text": "Potential future results"
   },
   {
-    "objectID": "index.html#flowchart-of-my-roadblocks",
-    "href": "index.html#flowchart-of-my-roadblocks",
+    "objectID": "index.html#potential-future-results-1",
+    "href": "index.html#potential-future-results-1",
     "title": "",
-    "section": "Flowchart of my roadblocks",
-    "text": "Flowchart of my roadblocks\n\nHeaven graphic at the end\nHow do we get there?"
+    "section": "Potential future results",
+    "text": "Potential future results"
   },
   {
-    "objectID": "index.html#section-1",
-    "href": "index.html#section-1",
+    "objectID": "index.html#thanks",
+    "href": "index.html#thanks",
     "title": "",
-    "section": "",
-    "text": "recombination() {\n  \n}"
-  },
-  {
-    "objectID": "index.html#questions",
-    "href": "index.html#questions",
-    "title": "",
-    "section": "Questions",
-    "text": "Questions"
+    "section": "Thanks!",
+    "text": "Thanks!\nQuestions?"
   }
 ]
