@@ -1,5 +1,5 @@
 ---
-title: "Modelling locally adaptive inversions"
+title: ""
 author: Alex Pinch
 date: 01/30/2023
 format: 
@@ -11,74 +11,147 @@ incremental: false
 highlight-style: a11y
 ---
 
+## Modelling locally adaptive inversions
+
+```{css, echo=FALSE}
+  .reveal h2 {
+  font-size: 55px;
+  position: bottom;
+}
+```
+
+![Alex Pinch, Jan. 30 2023](title_slide.jpg){width="100%"}
+
 ## 
 
-![Fig. 8.10, Genetics: Analysis & Principles 7th Ed.](textbook_photo.png){width="50%"}
+![Fig. 8.10, Brooker 7th Ed.](textbook_photo.png){width="50%"}
 
-## Short and sweet
+::: notes
+Probably everyone's first interaction with a chromosomal inversion. During recombination, chromosomal rearrangements like deletions can occur, but whole sections can also get flipped around. But, inversions are special. It's not like an insertion or deletion where the number of genes changes, and they aren't always super deleterious, they stick around! There's lots of interesting implications from the broader perspective of evolution. How they persist in populations is a bit puzzling, and they are suspected to drive speciation, and come to control important phenotypes like in Heliconious butterflies.
+:::
 
-![Fig. 2, Kirkpatrick 2010, PLoS Biology](inversion_graphic.png){width="50%"}
+## Stopping recombination
 
-## Long and bitter
+![Fig. 2, Kirkpatrick 2010](kirkpatrick_2010.png){width="50%"}
 
--   The first inversion paper (Strutevant, 1921)
--   How inversions drive speciation (Fuller et al., 2017)
--   How inversions evolve (Kirkpatrick, 2010)
+-   When the offspring is heterozygous for an inversion, recombination does not occur as a broken segment cannot find their homologous pair
 
-## What can models tell us about inversions?
+## Why are inversions important?
 
--   Outline why models are critical
+-   15-20 years ago, found that inversions are way more prevalent than previously thought, on the order of 1000s (Kirkpatrick, 2010)
+-   They can persist through populations and homozygotes can accumulate more deleterious mutations over time (Huang, 2022)
+-   Still puzzling how they persist in populations over time
+-   If genetic information is almost identical, how do they spread?
 
-## What we hope to find
+::: notes
+Strutevant described the first inversions 100 years ago, and inferenced that this would stop recombination in heterozygotes but not homozygotes. Next generation sequencing allowed the discovery of tons more structural rearrangements, which has generated more interest.It's posed an interesting question in evolution: if it has almost the same genetic information as it's not-inverted counterpart, how can it spread through a population? And we know that some inversion heterozygotes have a lower mutation load, like the work that Greg has done in sunflowers
+:::
 
--   Inversions that are locally advantageous will still accumulate more deleterious mutations over time
+## Local adaptation theory
 
-## The necessity for SLiM
+-   Inversions can show geographical variation (Krimbas and Powell, 1992)
+-   Which means that they might be locally adaptive
+-   If an inversion traps alleles that become ecologically favoured, this could explain why they persist
 
--   Ben Haller's dream
+::: notes
+INVERSIONS: Why are they important? An individual could have (trapped in their inversion) alleles/genes that have been selected out over time, but have just recently become ecologically favourable
+:::
 
-## One big loop
+## Our idea
 
-![SLiM Manual 2016](slim_functions.png){width="25%"}
+-   Individuals with a locally advantageous inversion will have an increase in mutational load, to the point where the advantage is lost
 
-## A generic overview of the model
+## How we're testing it
 
+-   By making a model that introduces a locally adaptive inversion across several populations we can keep track of fitness, number of mutations per genotype
+-   Can run the model as many times as we want to find trends
+
+::: notes
+By making a program that introduces an inversion, preventing recombination and giving inversion-carrying individuals a range of fitness benefits depending on which population they are from, we can make it output key data like fitness values, number of deleterious mutations and its inversion genotype. Others have modeled the long-term fate of inversions, and there's lots of ways of going about this. I'll try and point out where things could or have been changed.
+:::
+
+## How inversions spread
+
+![Fig. 1, Faria et al. 2019 (Modified)](faria_2019.jpg){width="50%"}
+
+::: notes
+A simplified outline for the different outcomes of an inversion
+:::
+
+## How inversions spread
+
+![Fig. 1, Faria et al., 2019 (Modified)](faria_2019_2.jpg){width="50%"}
+
+::: notes
+Roughly how inversions accumulate, and the current thinking for how
+:::
+
+## A SLiMtroduction
+
+-   We built a forward-genetics simulation using SLiM
+-   SLiM (**S**election on **Li**nked **M**utations) was developed by Ben Haller and Phillip Messer at Cornell
+-   SLiM uses a basic framework for modelling individuals over generations
+-   Computes at the gene level, not concerned with base pairs
+-   Uses a proprietary programming language built to be like R, but as fast as C
+
+## A SLiMtroduction
+
+![Haller, 2016](slim_functions.png){width="30%"}
+
+::: notes
+SLiM is one big loop, I'm pointing out the recombination function here because that's a pretty critical part for us and our model
+:::
+
+## Our model
+
+::: columns
+::: {.column width="60%"}
 -   At time = 0
-    -   Define a swathe of the chromosome by a start and end point variable
-    -   Give one individual two copies of a mutation at that start position
-    -   This mutation will flag an individual as having an inversion
+    -   Define a start and end point variable for the inversion,
+    -   Give one individual two copies of a mutation at that start position, will serve as a marker
+    -   Define a grid of subpopulations and establish a fitness gradient for inversion-carrying individuals
+:::
 
-## A generic overview of the model
+::: {.column width="40%"}
+![](populations.jpg){width="100%"}
+:::
+:::
+
+## Our model
 
 -   Every generation:
-    -   Check every individual for that marker mutation, if found:
-        -   Suppress recombination and manually alter fitness
+    -   Check every individual for that marker mutation
+    -   If found: suppress recombination and manually alter fitness
+    -   Individuals have a chance to migrate to another subpopulation, where their inversion will either help or hurt them
 
-## What this model is NOT doing
+## Our model
 
--   It is not actually inverting a section of a simulated chromosome
--   Instead, we define the length and place a marker to keep track of it, changing the breakpoints and fitness manually
+-   What this model is not doing:
+    -   It is not actually inverting a section of a simulated chromosome
+    -   Instead, we define the length and place a marker to keep track of it, changing the breakpoints and fitness manually
+    -   It is not keeping track of base pairs, codons, amino acids, proteins...
 
-## Why how we code recombination is important
+## Altering recombination
 
--   Preventing recombination is the sole driver for maintaining an inversion over generations (citation)
+-   Preventing recombination is at the base of how inversions are physically maintained on the chromosome over time
+-   So how we code recombination is integral to the model
 
-## How we alter recombination
+## Altering recombination
 
 -   In heterozygotes, recombination must be prevented
 -   In homozygotes, the breakpoints must be changed and told where the inversion is
 
-## Editing SLiM's recombination
+## Altering recombination
 
 -   SLiM does recombination automatically, so you must define a function named 'recombination' to supersede it
 -   If this function returns false, SLiM's normal recombinaton function takes over
 -   If this function returns true, SLiM considers recombination over and continues the loop
 
-## Our recombination function
+## Altering recombination
 
-![](recombination_flowchart.jpg){width="50%"}
+![](flowchart.jpeg){width="50%"}
 
-## Our recombination function
+## Altering recombination
 
 ```{R}
 #| echo: TRUE
@@ -122,9 +195,9 @@ recombination() {
 -   This recombination function is called for every individual, in every population, every generation
 -   500 individuals \* 9 populations \* 100 000 generations \* 1000 iterations of this script = 450 billion times
 
-## October run results
+## Run results
 
--   Average fitness vs. genotype per region plot\
+-   Average fitness vs. genotype per region plot
 
 ```{r}
 library(tidyverse)
@@ -132,12 +205,15 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy, color = class))
 ```
 
-## November run results
-
 ## (Aside) Parameter hell
 
 -   Screenshot of model_final, model_final_final
 -   Why this mindset is bad
+
+## Potential future results
+
+-   Mutational load increases like found in Berdan et al. (2021)
+-   What this means ![Fig. 2A-B, Berdan 2021 (Adapted)](berdan_2021.png)
 
 ## Flowchart of my roadblocks
 
