@@ -22,19 +22,15 @@ highlight-style: a11y
 
 ![Alex Pinch, Jan. 30 2023](title_slide.jpg){width="100%"}
 
-## 
-
-![Fig. 8.10, Brooker 7th Ed.](textbook_photo.png){width="50%"}
-
-::: notes
-Probably everyone's first interaction with a chromosomal inversion. During recombination, chromosomal rearrangements like deletions can occur, but whole sections can also get flipped around. But, inversions are special. It's not like an insertion or deletion where the number of genes changes, and they aren't always super deleterious, they stick around! There's lots of interesting implications from the broader perspective of evolution. How they persist in populations is a bit puzzling, and they are suspected to drive speciation, and come to control important phenotypes like in Heliconious butterflies.
-:::
-
 ## Stopping recombination
 
 ![Fig. 2, Kirkpatrick 2010](kirkpatrick_2010.png){width="50%"}
 
 -   When offspring are heterozygous for an inversion, recombination does not occur as a broken segment cannot find their homologous pair
+
+::: notes
+A simplified diagram of what's happening during recombination. During recombination, chromosomal rearrangements like deletions can occur, but whole sections can also get flipped around. But, inversions are special. It's not like an insertion or deletion where the number of genes changes, and they aren't always super deleterious, they stick around! There's lots of interesting implications from the broader perspective of evolution. How they persist in populations is a bit puzzling, and they are suspected to drive speciation, and come to control important phenotypes like in Heliconious butterflies.
+:::
 
 ## Why are inversions important?
 
@@ -60,11 +56,6 @@ Strutevant described the first inversions 100 years ago, and inferenced that thi
 
 -   Individuals with a locally advantageous inversion will have an increase in mutational load, to the point where the advantage is lost
 
-## How we're testing it
-
--   By making a model that introduces a locally adaptive inversion across several populations we can keep track of fitness, number of mutations per genotype
--   Can run the model as many times as we want to find trends
-
 ::: notes
 By making a program that introduces an inversion, preventing recombination and giving inversion-carrying individuals a range of fitness benefits depending on which population they are from, we can make it output key data like fitness values, number of deleterious mutations and its inversion genotype. Others have modeled the long-term fate of inversions, and there's lots of ways of going about this. I'll try and point out where things could or have been changed.
 :::
@@ -84,6 +75,12 @@ A simplified outline for the different outcomes of an inversion
 ::: notes
 In this case, locally advantageous alleles causes some population divergence, but when does the mutational load increase tip this balance?
 :::
+
+## How we're testing it
+
+-   By making a model that introduces a locally adaptive inversion across several populations we can keep track of fitness, number of mutations per genotype
+-   Can run the model as many times as we want to find trends
+
 
 ## A SLiMtroduction
 
@@ -191,15 +188,98 @@ recombination() {
 -   This recombination function is called for every individual, in every population, every generation
 -   500 individuals \* 9 populations \* 100 000 generations \* 1000 iterations of this script = 450 billion times
 
+## Previous work in modelling inversions in SLiM
+-   Berdan et al. (2021) observed a sharp decrease in fitness when heterozygote was favoured
+![Fig. 2A-B, Berdan 2021 (Adapted)](berdan_2021.jpg)
+
 ## Preliminary results
--   genotype_vs_fitness_allindividuals_allpops_allruns plot
--   Average fitness vs. genotype per region plot
--   mean_90_Ci plot
 
 ```{r}
 library(tidyverse)
-ggplot(data = mpg) +
-  geom_point(mapping = aes(x = displ, y = hwy, color = class))
+all_data <- tibble()
+files <- length(list.files("/Users/alexpinch/GitHub/private/jan30_presentation/data_101822/full_runs/"))
+full_runs <- list.files("/Users/alexpinch/GitHub/private/jan30_presentation/data_101822/full_runs/")
+for (i in 1:files) {
+  run <- (full_runs[i])
+  typeof(run)
+  setwd(file.path("/Users/alexpinch/GitHub/private/jan30_presentation/data_101822/full_runs//",run))
+  run_data <- read.csv(file = paste(run,".csv",sep=""),skip=1,header=F) %>%
+    rename(gen=V1,pop=V2,sample=V3,fitness=V4,inv_genotype=V5)
+  run_data <- run_data %>% mutate(sim_run=run)
+  all_data <- rbind(all_data, run_data)
+}
+all_data %>%
+  mutate(fixed_fitness = case_when(inv_genotype == 2 & pop %in% c("pop1","pop2","pop4") ~ fitness - 0.1,
+                                   inv_genotype == 2 & pop %in% c("pop6","pop8","pop9") ~ fitness + 0.1,
+                                   inv_genotype == 1 & pop %in% c("pop1","pop2","pop4") ~ fitness - 0.05,
+                                   inv_genotype == 1 & pop %in% c("pop6","pop8","pop9") ~ fitness + 0.05,
+                                   TRUE ~ fitness)) %>%
+  group_by(gen, pop, inv_genotype)%>%
+  summarize(mean_fitness= mean(fixed_fitness,na.rm=T)) %>%
+  ggplot(.,aes(x=gen,y=mean_fitness,group=inv_genotype,color=inv_genotype)) +
+  geom_smooth(method="loess") +
+  facet_wrap(~pop)
+```
+
+## Preliminary results
+
+```{r}
+library(tidyverse)
+all_data <- tibble()
+files <- length(list.files("/Users/alexpinch/GitHub/private/jan30_presentation/data_101822/full_runs/"))
+full_runs <- list.files("/Users/alexpinch/GitHub/private/jan30_presentation/data_101822/full_runs/")
+for (i in 1:files) {
+  run <- (full_runs[i])
+  typeof(run)
+  setwd(file.path("/Users/alexpinch/GitHub/private/jan30_presentation/data_101822/full_runs//",run))
+  run_data <- read.csv(file = paste(run,".csv",sep=""),skip=1,header=F) %>%
+    rename(gen=V1,pop=V2,sample=V3,fitness=V4,inv_genotype=V5)
+  run_data <- run_data %>% mutate(sim_run=run)
+  all_data <- rbind(all_data, run_data)
+}
+genotype <- as_factor(inv_genotype)
+all_data %>%
+  group_by(gen,pop,inv_genotype) %>%
+  summarize(n=n()) %>%
+  mutate(freq = n / sum(n)) %>%
+  ggplot(.,aes(x=gen,y=freq,color=genotype)) +
+  geom_line() +
+  facet_wrap(~pop)
+```
+
+## Preliminary results
+```{r}
+library(tidyverse)
+all_data <- tibble()
+files <- length(list.files("/Users/alexpinch/GitHub/private/jan30_presentation/data_101822/full_runs/"))
+full_runs <- list.files("/Users/alexpinch/GitHub/private/jan30_presentation/data_101822/full_runs/")
+for (i in 1:files) {
+  run <- (full_runs[i])
+  typeof(run)
+  setwd(file.path("/Users/alexpinch/GitHub/private/jan30_presentation/data_101822/full_runs//",run))
+  run_data <- read.csv(file = paste(run,".csv",sep=""),skip=1,header=F) %>%
+    rename(gen=V1,pop=V2,sample=V3,fitness=V4,inv_genotype=V5)
+  run_data <- run_data %>% mutate(sim_run=run)
+  all_data <- rbind(all_data, run_data)
+}
+summarized_data <- all_data %>%
+  mutate(fixed_fitness = case_when(inv_genotype == 2 & pop %in% c("pop1","pop2","pop4") ~ fitness - 0.1,
+                                   inv_genotype == 2 & pop %in% c("pop6","pop8","pop9") ~ fitness + 0.1,
+                                   inv_genotype == 1 & pop %in% c("pop1","pop2","pop4") ~ fitness - 0.05,
+                                   inv_genotype == 1 & pop %in% c("pop6","pop8","pop9") ~ fitness + 0.05,
+                                   TRUE ~ fitness)) %>%
+  filter(!is.na(inv_genotype)) %>%
+  group_by(gen, sim_run, inv_genotype) %>%
+  summarize(mean_fit = mean(fixed_fitness,na.rm=T)) %>%
+  group_by(gen,inv_genotype) %>%
+  mutate(qnt_90 = quantile(mean_fit, 0.9),
+         qnt_10 = quantile(mean_fit, 0.1),
+         mean_sim_fit = quantile(mean_fit, 0.9)) ## 0.5 = median
+summarized_data %>%
+  ggplot(.) +
+  geom_line(aes(x=gen,y=mean_sim_fit,group=inv_genotype,color=as.factor(inv_genotype))) +
+  geom_ribbon(aes(x=gen,ymin=qnt_10,ymax=qnt_90,group=inv_genotype,fill=as.factor(inv_genotype)),alpha=0.2) # alpha = transparency
+
 ```
 
 ## (Aside) Parameter hell
@@ -216,15 +296,18 @@ ggplot(data = mpg) +
 :::
 :::
 
-## Previous work in modelling inversions in SLiM
--   Berdan et al. (2021) observed a sharp decrease in fitness when heterozygote was favoured
-![Fig. 2A-B, Berdan 2021 (Adapted)](berdan_2021.jpg)
+:: notes
+This parameter issue being said, we probably do need to change the model
+::
 
 ## Potential future results
 ![](example_graph_1.jpeg)
 
 ## Potential future results
 ![](example_graph_2.jpeg)
+## Why were results unexpected?
+-   Either we have scaled down the model incorrectly
+-   Or something is wrong in our recombination model
 
 ## Thanks!
 Questions?
