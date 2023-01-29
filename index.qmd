@@ -195,14 +195,16 @@ recombination() {
 ## Preliminary results
 
 ```{r}
+#| echo: FALSE
 library(tidyverse)
+setwd("/Users/alexpinch/GitHub/private/jan30_presentation")
 all_data <- tibble()
 files <- length(list.files("/Users/alexpinch/GitHub/private/jan30_presentation/data_101822/full_runs/"))
 full_runs <- list.files("/Users/alexpinch/GitHub/private/jan30_presentation/data_101822/full_runs/")
 for (i in 1:files) {
   run <- (full_runs[i])
   typeof(run)
-  setwd(file.path("/Users/alexpinch/GitHub/private/jan30_presentation/data_101822/full_runs//",run))
+  setwd(file.path("/Users/alexpinch/GitHub/private/jan30_presentation/data_101822/full_runs/",run))
   run_data <- read.csv(file = paste(run,".csv",sep=""),skip=1,header=F) %>%
     rename(gen=V1,pop=V2,sample=V3,fitness=V4,inv_genotype=V5)
   run_data <- run_data %>% mutate(sim_run=run)
@@ -224,39 +226,42 @@ all_data %>%
 ## Preliminary results
 
 ```{r}
+#| echo: FALSE
 library(tidyverse)
+setwd("/Users/alexpinch/GitHub/private/jan30_presentation")
 all_data <- tibble()
 files <- length(list.files("/Users/alexpinch/GitHub/private/jan30_presentation/data_101822/full_runs/"))
 full_runs <- list.files("/Users/alexpinch/GitHub/private/jan30_presentation/data_101822/full_runs/")
 for (i in 1:files) {
   run <- (full_runs[i])
   typeof(run)
-  setwd(file.path("/Users/alexpinch/GitHub/private/jan30_presentation/data_101822/full_runs//",run))
+  setwd(file.path("/Users/alexpinch/GitHub/private/jan30_presentation/data_101822/full_runs/",run))
   run_data <- read.csv(file = paste(run,".csv",sep=""),skip=1,header=F) %>%
     rename(gen=V1,pop=V2,sample=V3,fitness=V4,inv_genotype=V5)
   run_data <- run_data %>% mutate(sim_run=run)
   all_data <- rbind(all_data, run_data)
 }
-genotype <- as_factor(inv_genotype)
 all_data %>%
   group_by(gen,pop,inv_genotype) %>%
   summarize(n=n()) %>%
   mutate(freq = n / sum(n)) %>%
-  ggplot(.,aes(x=gen,y=freq,color=genotype)) +
+  ggplot(.,aes(x=gen,y=freq,color=as_factor(inv_genotype))) +
   geom_line() +
   facet_wrap(~pop)
 ```
 
 ## Preliminary results
 ```{r}
+#| echo: FALSE
 library(tidyverse)
+setwd("/Users/alexpinch/GitHub/private/jan30_presentation")
 all_data <- tibble()
 files <- length(list.files("/Users/alexpinch/GitHub/private/jan30_presentation/data_101822/full_runs/"))
 full_runs <- list.files("/Users/alexpinch/GitHub/private/jan30_presentation/data_101822/full_runs/")
 for (i in 1:files) {
   run <- (full_runs[i])
   typeof(run)
-  setwd(file.path("/Users/alexpinch/GitHub/private/jan30_presentation/data_101822/full_runs//",run))
+  setwd(file.path("/Users/alexpinch/GitHub/private/jan30_presentation/data_101822/full_runs/",run))
   run_data <- read.csv(file = paste(run,".csv",sep=""),skip=1,header=F) %>%
     rename(gen=V1,pop=V2,sample=V3,fitness=V4,inv_genotype=V5)
   run_data <- run_data %>% mutate(sim_run=run)
