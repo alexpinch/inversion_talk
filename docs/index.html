@@ -400,12 +400,15 @@
 </style>
 </div>
 
-<img data-src="title_slide.jpg" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Alex Pinch, Jan.&nbsp;30 2023</p></section>
-<section id="section" class="slide level2">
-<h2></h2>
+<img data-src="images/title_slide.jpg" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Alex Pinch, Jan.&nbsp;30 2023</p></section>
+<section id="stopping-recombination" class="slide level2">
+<h2>Stopping recombination</h2>
 
-<img data-src="textbook_photo.png" style="width:50.0%" class="r-stretch quarto-figure-center"><p class="caption">Fig. 8.10, Brooker 7th Ed.</p><aside class="notes">
-<p>Probably everyone’s first interaction with a chromosomal inversion. During recombination, chromosomal rearrangements like deletions can occur, but whole sections can also get flipped around. But, inversions are special. It’s not like an insertion or deletion where the number of genes changes, and they aren’t always super deleterious, they stick around! There’s lots of interesting implications from the broader perspective of evolution. How they persist in populations is a bit puzzling, and they are suspected to drive speciation, and come to control important phenotypes like in Heliconious butterflies.</p>
+<img data-src="images/kirkpatrick_2010.png" style="width:50.0%" class="r-stretch quarto-figure-center"><p class="caption">Fig. 2, Kirkpatrick 2010</p><ul>
+<li>When offspring are heterozygous for an inversion, recombination does not occur as a broken segment cannot find their homologous pair</li>
+</ul>
+<aside class="notes">
+<p>A simplified diagram of how an inversion prevents recombination. During recombination, chromosomal rearrangements like deletions can occur, but whole sections can also get flipped around. It’s not like an insertion or deletion where the number of genes changes, and inversions aren’t always super deleterious, so they stick around over generations! There’s lots of interesting implications from the broader perspective of evolution. How they persist in populations is a bit puzzling, and they are suspected to drive speciation, and come to control important phenotypes like in Heliconious butterflies.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -418,23 +421,15 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="stopping-recombination" class="slide level2">
-<h2>Stopping recombination</h2>
-
-<img data-src="kirkpatrick_2010.png" style="width:50.0%" class="r-stretch quarto-figure-center"><p class="caption">Fig. 2, Kirkpatrick 2010</p><ul>
-<li>When offspring are heterozygous for an inversion, recombination does not occur as a broken segment cannot find their homologous pair</li>
-</ul>
-</section>
 <section id="why-are-inversions-important" class="slide level2">
 <h2>Why are inversions important?</h2>
 <ul>
-<li>15-20 years ago, found that inversions are way more prevalent than previously thought (Kirkpatrick, 2010)</li>
+<li>By stopping recombination, harmful mutations aren’t purged, resulting in their increase over time (Kirkpatrick 2010)</li>
 <li>They can persist through populations and homozygotes can accumulate more deleterious mutations over time (Huang, 2022)</li>
-<li>Still puzzling how they stick around</li>
 <li>If genetic information is almost identical (only linear order changed), how do they spread?</li>
 </ul>
 <aside class="notes">
-<p>Strutevant described the first inversions 100 years ago, and inferenced that this would stop recombination in heterozygotes but not homozygotes. Next generation sequencing allowed the discovery of tons more structural rearrangements, which has generated more interest.It’s posed an interesting question in evolution: if it has almost the same genetic information as it’s not-inverted counterpart, how can it spread through a population? And we know that some inversion heterozygotes have a lower mutation load, like the work that Greg has done in sunflowers</p>
+<p>Inversions pose an interesting question in evolution: if it has almost the same genetic information as it’s not-inverted counterpart, how can it spread through a population? And we know that some inversion heterozygotes have a lower mutation load than homozygotes</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -450,8 +445,8 @@
 <section id="local-adaptation-theory" class="slide level2">
 <h2>Local adaptation theory</h2>
 <ul>
-<li>Inversions can show geographical variation (Krimbas and Powell, 1992)</li>
-<li>This implies that they might be locally adaptive</li>
+<li>An inversion’s frequency can change across a geographical cline (Krimbas and Powell, 1992)</li>
+<li>Suggests that they could be locally adaptive and contain genes that are environmentally favourable</li>
 <li>If an inversion traps genes that become ecologically favoured, this could explain why they persist</li>
 </ul>
 <aside class="notes">
@@ -468,20 +463,14 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="our-idea" class="slide level2">
-<h2>Our idea</h2>
+<section id="what-were-testing" class="slide level2">
+<h2>What we’re testing</h2>
 <ul>
-<li>Individuals with a locally advantageous inversion will have an increase in mutational load, to the point where the advantage is lost</li>
-</ul>
-</section>
-<section id="how-were-testing-it" class="slide level2">
-<h2>How we’re testing it</h2>
-<ul>
-<li>By making a model that introduces a locally adaptive inversion across several populations we can keep track of fitness, number of mutations per genotype</li>
-<li>Can run the model as many times as we want to find trends</li>
+<li>Across different environments, individuals that possess a locally advantageous inversion will have an increase in mutational load</li>
+<li>Homozygous individuals will have a greater accumulation of deleterious mutations than heterozygotes</li>
 </ul>
 <aside class="notes">
-<p>By making a program that introduces an inversion, preventing recombination and giving inversion-carrying individuals a range of fitness benefits depending on which population they are from, we can make it output key data like fitness values, number of deleterious mutations and its inversion genotype. Others have modeled the long-term fate of inversions, and there’s lots of ways of going about this. I’ll try and point out where things could or have been changed.</p>
+<p>By making a program that introduces an inversion, preventing recombination and giving inversion-carrying individuals a range of fitness benefits depending on which population they are from, we can make it output key data like fitness values, number of deleterious mutations and its inversion genotype. What we’re expected to see is individuals that have a locally advantageous inversion will have an increase in mutational load, to the point where the inversion is lost. Homozygous individuals will have a greater accumulation of deleterious mutations than heterozygotes.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -497,8 +486,8 @@
 <section id="how-inversions-spread" class="slide level2">
 <h2>How inversions spread</h2>
 
-<img data-src="faria_2019.jpg" style="width:50.0%" class="r-stretch quarto-figure-center"><p class="caption">Fig. 1, Faria et al.&nbsp;2019 (Modified)</p><aside class="notes">
-<p>A simplified outline for the different outcomes of an inversion</p>
+<img data-src="images/faria_2019.jpg" style="width:50.0%" class="r-stretch quarto-figure-center"><p class="caption">Fig. 1, Faria et al.&nbsp;2019 (Modified)</p><aside class="notes">
+<p>A simplified outline for the different outcomes of an inversion, when an inversion arises, it can either become fixed or is lost immediately. However we’re not really interested in the final outcomes of either fixation or speciation.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -514,8 +503,8 @@
 <section id="how-inversions-spread-1" class="slide level2">
 <h2>How inversions spread</h2>
 
-<img data-src="faria_2019_2.jpg" style="width:50.0%" class="r-stretch quarto-figure-center"><p class="caption">Fig. 1, Faria et al., 2019 (Modified)</p><aside class="notes">
-<p>In this case, locally advantageous alleles causes some population divergence, but when does the mutational load increase tip this balance?</p>
+<img data-src="images/faria_2019_2.jpg" style="width:50.0%" class="r-stretch quarto-figure-center"><p class="caption">Fig. 1, Faria et al., 2019 (Modified)</p><aside class="notes">
+<p>More interested in this intermediate stage, whats happening as these inversions are maintained. In the case of our model, locally advantageous alleles causes some population divergence, but when does the mutational load increase tip this balance?</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -527,6 +516,13 @@
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+<section id="how-were-testing-it" class="slide level2">
+<h2>How we’re testing it</h2>
+<ul>
+<li>By making a model that introduces a locally adaptive inversion across several populations we can keep track of fitness, number of mutations per genotype</li>
+<li>Can run the model many times to find trends</li>
+</ul>
 </section>
 <section id="a-slimtroduction" class="slide level2">
 <h2>A SLiMtroduction</h2>
@@ -541,7 +537,7 @@
 <section id="a-slimtroduction-1" class="slide level2">
 <h2>A SLiMtroduction</h2>
 
-<img data-src="slim_functions.png" style="width:30.0%" class="r-stretch quarto-figure-center"><p class="caption">Haller, 2016</p><aside class="notes">
+<img data-src="images/slim_functions.png" style="width:30.0%" class="r-stretch quarto-figure-center"><p class="caption">Haller, 2016</p><aside class="notes">
 <p>SLiM is one big loop, I’m pointing out the recombination function here because that’s a pretty critical part for us and our model</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -564,6 +560,17 @@
 <ul>
 <li>Define a grid of subpopulations and establish a fitness gradient for inversion-carrying individuals</li>
 </ul></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="images/populations.jpg" style="width:100.0%"></p>
+</div>
+</div>
+</section>
+<section id="our-model-1" class="slide level2">
+<h2>Our model</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
 <li>After 50,000 generations:
 <ul>
 <li>Define a start and end point variable for the inversion</li>
@@ -571,11 +578,11 @@
 </ul></li>
 </ul>
 </div><div class="column" style="width:40%;">
-<p><img data-src="populations.jpg" style="width:100.0%"></p>
+<p><img data-src="images/populations.jpg" style="width:100.0%"></p>
 </div>
 </div>
 </section>
-<section id="our-model-1" class="slide level2">
+<section id="our-model-2" class="slide level2">
 <h2>Our model</h2>
 <ul>
 <li>Every generation:
@@ -586,7 +593,7 @@
 </ul></li>
 </ul>
 </section>
-<section id="our-model-2" class="slide level2">
+<section id="our-model-3" class="slide level2">
 <h2>Our model</h2>
 <ul>
 <li>What this model is not doing:
@@ -610,13 +617,13 @@
 <ul>
 <li>SLiM does recombination automatically, so you must define a function named ‘recombination’ to supersede it</li>
 <li>If this function returns false, SLiM’s normal recombinaton function takes over</li>
-<li>If this function returns true, SLiM considers recombination over and continues the loop</li>
+<li>If this function returns true, SLiM considers recombination complete and continues the loop</li>
 </ul>
 </section>
 <section id="altering-recombination-2" class="slide level2">
 <h2>Altering recombination</h2>
 
-<img data-src="flowchart.jpeg" style="width:70.0%" class="r-stretch"></section>
+<img data-src="images/flowchart.jpeg" style="width:70.0%" class="r-stretch"></section>
 <section id="altering-recombination-3" class="slide level2">
 <h2>Altering recombination</h2>
 <div class="cell">
@@ -653,52 +660,95 @@
 <span id="cb1-31"><a href="#cb1-31"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="aside-a-sense-of-scale" class="slide level2">
-<h2>(Aside) A sense of scale</h2>
-<ul>
-<li>This recombination function is called for every individual, in every population, every generation</li>
-<li>500 individuals * 9 populations * 100 000 generations * 1000 iterations of this script = 450 billion times</li>
-</ul>
+<section id="previous-work-in-modelling-inversions" class="slide level2">
+<h2>Previous work in modelling inversions</h2>
+
+<img data-src="images/berdan_2021.jpg" style="width:60.0%" class="r-stretch quarto-figure-center"><p class="caption">Fig. 2A-B, Berdan et al.&nbsp;2021 (Adapted)</p><aside class="notes">
+<p>Berdan observed a sharp decrease in fitness and increase in mutation accumulation</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="preliminary-results" class="slide level2">
 <h2>Preliminary results</h2>
-<ul>
-<li>genotype_vs_fitness_allindividuals_allpops_allruns plot</li>
-<li>Average fitness vs.&nbsp;genotype per region plot</li>
-<li>mean_90_Ci plot</li>
-</ul>
 
-<img data-src="index_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
-<section id="aside-parameter-hell" class="slide level2">
-<h2>(Aside) Parameter hell</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<ul>
-<li>When modelling, the methods and results can be in constant flux</li>
-<li>For every new idea, can go back, tweak the model, and generate new data</li>
-<li>Avoid this mindset!! Hold strictly to the hypothesis…</li>
-</ul>
-</div><div class="column" style="width:40%;">
-<p><img data-src="parameters.png" style="width:100.0%"></p>
-</div>
-</div>
+<img data-src="images/results_freq.png" class="r-stretch"><aside class="notes">
+<p>Here we see the frequency of these genotypes over time, with very low frequency in the lower populations with the worst fitness, and an increase in frequency in populations where the inversion is more advantageous. This is expected</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="previous-work-in-modelling-inversions-in-slim" class="slide level2">
-<h2>Previous work in modelling inversions in SLiM</h2>
-<ul>
-<li>Berdan et al.&nbsp;(2021) observed a sharp decrease in fitness when heterozygote was favoured <img data-src="berdan_2021.jpg" alt="Fig. 2A-B, Berdan 2021 (Adapted)"></li>
-</ul>
+<section id="preliminary-results-1" class="slide level2">
+<h2>Preliminary results</h2>
+
+<img data-src="images/results_meanfit.png" class="r-stretch"><aside class="notes">
+<p>This is the mean fitness of all populations over time. Fitness can serve as a proxy for mutational load after we subtract the strict benefits we have given them in the model. This shows a very minimal decrease in homozygote fitness, while the heterozygotes fitness is maintained. This is in contrast to previous work by Berdan that saw a sharp decrease in fitness in inversion carrying individuals.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="preliminary-results-2" class="slide level2">
+<h2>Preliminary results</h2>
+
+<img data-src="images/results_fitness_pops.png" class="r-stretch"><aside class="notes">
+<p>So we can look at fitness across different populations. Homozygotes have the worst fitness, as they will have accumulated a larger mutational load, heterozygotes decrease</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="potential-future-results" class="slide level2">
 <h2>Potential future results</h2>
 
-<img data-src="example_graph_1.jpeg" class="r-stretch"></section>
+<img data-src="images/example_graph_1.jpeg" class="r-stretch"></section>
 <section id="potential-future-results-1" class="slide level2">
 <h2>Potential future results</h2>
 
-<img data-src="example_graph_2.jpeg" class="r-stretch"></section>
-<section id="thanks" class="slide level2">
-<h2>Thanks!</h2>
+<img data-src="images/example_graph_2.jpeg" class="r-stretch"></section>
+<section id="next-steps" class="slide level2">
+<h2>Next steps</h2>
+<ul>
+<li><p>Results could be unexpected because we have scaled down the model incorrectly, or the recombination function isn’t representative</p></li>
+<li><p>Could look at mutations trapped in the inversion next, plot their contents across runs</p></li>
+<li><p>Runs with an inversion with deleterious mutations locked in it may be outweighing the strict fitness benefit we give them</p></li>
+</ul>
+</section>
+<section id="thank-you" class="slide level2">
+<h2>Thank you!</h2>
+<p>Acknowledgements:<br>
+SLiM development team (Ben Haller, Phillip Messer) as well as their slim-discuss Google forum<br>
+Dr.&nbsp;Greg Owens, whose guidance and work in sunflowers has spurred this interest in modelling inversions</p>
 <p>Questions?</p>
 
 <div class="footer footer-default">
