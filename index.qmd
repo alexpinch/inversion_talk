@@ -120,7 +120,7 @@ SLiM is one big loop, I'm pointing out the recombination function here because t
 :::
 
 ::: {.column width="40%"}
-![](images/populations.jpg){width="100%"}
+![](images/populations.png){width="100%"}
 :::
 :::
 
