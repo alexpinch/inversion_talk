@@ -20,11 +20,11 @@ highlight-style: a11y
 }
 ```
 
-![Alex Pinch, Jan. 30 2023](title_slide.jpg){width="100%"}
+![Alex Pinch, Jan. 30 2023](images/title_slide.jpg){width="100%"}
 
 ## Stopping recombination
 
-![Fig. 2, Kirkpatrick 2010](kirkpatrick_2010.png){width="50%"}
+![Fig. 2, Kirkpatrick 2010](images/kirkpatrick_2010.png){width="50%"}
 
 -   When offspring are heterozygous for an inversion, recombination does not occur as a broken segment cannot find their homologous pair
 
@@ -62,7 +62,7 @@ By making a program that introduces an inversion, preventing recombination and g
 
 ## How inversions spread
 
-![Fig. 1, Faria et al. 2019 (Modified)](faria_2019.jpg){width="50%"}
+![Fig. 1, Faria et al. 2019 (Modified)](images/faria_2019.jpg){width="50%"}
 
 ::: notes
 A simplified outline for the different outcomes of an inversion, when an inversion arises, it can either become fixed or is lost immediately. However we're not really interested in the final outcomes of either fixation or speciation.
@@ -70,7 +70,7 @@ A simplified outline for the different outcomes of an inversion, when an inversi
 
 ## How inversions spread
 
-![Fig. 1, Faria et al., 2019 (Modified)](faria_2019_2.jpg){width="50%"}
+![Fig. 1, Faria et al., 2019 (Modified)](images/faria_2019_2.jpg){width="50%"}
 
 ::: notes
 More interested in this intermediate stage, whats happening as these inversions are maintained. In the case of our model, locally advantageous alleles causes some population divergence, but when does the mutational load increase tip this balance?
@@ -91,7 +91,7 @@ More interested in this intermediate stage, whats happening as these inversions 
 
 ## A SLiMtroduction
 
-![Haller, 2016](slim_functions.png){width="30%"}
+![Haller, 2016](images/slim_functions.png){width="30%"}
 
 ::: notes
 SLiM is one big loop, I'm pointing out the recombination function here because that's a pretty critical part for us and our model
@@ -106,7 +106,7 @@ SLiM is one big loop, I'm pointing out the recombination function here because t
 :::
 
 ::: {.column width="40%"}
-![](populations.jpg){width="100%"}
+![](images/populations.jpg){width="100%"}
 :::
 :::
 
@@ -120,7 +120,7 @@ SLiM is one big loop, I'm pointing out the recombination function here because t
 :::
 
 ::: {.column width="40%"}
-![](populations.jpg){width="100%"}
+![](images/populations.jpg){width="100%"}
 :::
 :::
 
@@ -152,7 +152,7 @@ SLiM is one big loop, I'm pointing out the recombination function here because t
 
 ## Altering recombination
 
-![](flowchart.jpeg){width="70%"}
+![](images/flowchart.jpeg){width="70%"}
 
 ## Altering recombination
 
@@ -195,7 +195,7 @@ recombination() {
 
 ## Previous work in modelling inversions
 
-![Fig. 2A-B, Berdan et al. 2021 (Adapted)](berdan_2021.jpg){width="60%"}
+![Fig. 2A-B, Berdan et al. 2021 (Adapted)](images/berdan_2021.jpg){width="60%"}
 
 ::: notes
 Berdan observed a sharp decrease in fitness and increase in mutation accumulation
@@ -203,7 +203,7 @@ Berdan observed a sharp decrease in fitness and increase in mutation accumulatio
 
 ## Preliminary results
 
-![](results_freq.png)
+![](images/results_freq.png)
 
 ::: notes
 Here we see the frequency of these genotypes over time, with very low frequency in the lower populations with the worst fitness, and an increase in frequency in populations where the inversion is more advantageous. This is expected
@@ -211,7 +211,7 @@ Here we see the frequency of these genotypes over time, with very low frequency 
 
 ## Preliminary results
 
-![](results_meanfit.png)
+![](images/results_meanfit.png)
 
 ::: notes
 This is the mean fitness of all populations over time. Fitness can serve as a proxy for mutational load after we subtract the strict benefits we have given them in the model. This shows a very minimal decrease in homozygote fitness, while the heterozygotes fitness is maintained. This is in contrast to previous work by Berdan that saw a sharp decrease in fitness in inversion carrying individuals.
@@ -219,7 +219,7 @@ This is the mean fitness of all populations over time. Fitness can serve as a pr
 
 ## Preliminary results
 
-![](results_fitness_pops.png)
+![](images/results_fitness_pops.png)
 
 ::: notes
 So we can look at fitness across different populations. Homozygotes have the worst fitness, as they will have accumulated a larger mutational load, heterozygotes decrease
@@ -227,11 +227,11 @@ So we can look at fitness across different populations. Homozygotes have the wor
 
 ## Potential future results
 
-![](example_graph_1.jpeg)
+![](images/example_graph_1.jpeg)
 
 ## Potential future results
 
-![](example_graph_2.jpeg)
+![](images/example_graph_2.jpeg)
 
 ## Next steps
 
