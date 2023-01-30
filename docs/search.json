@@ -46,7 +46,7 @@
     "href": "index.html#how-inversions-spread-1",
     "title": "",
     "section": "How inversions spread",
-    "text": "How inversions spread\n\nFig. 1, Faria et al., 2019 (Modified)\nMore interested in this intermediate stage, whats happening as these inversions are maintained. In the case of our model, locally advantageous alleles causes some population divergence, but when does the mutational load increase tip this balance?"
+    "text": "How inversions spread\n\nFig. 1, Faria et al. 2019 (Modified)\nMore interested in this intermediate stage, whats happening as these inversions are maintained. In the case of our model, locally advantageous alleles causes some population divergence, but when does the mutational load increase tip this balance?"
   },
   {
     "objectID": "index.html#how-were-testing-it",
@@ -154,31 +154,38 @@
     "text": "Preliminary results\n\n\nSo we can look at fitness across different populations. Homozygotes have the worst fitness, as they will have accumulated a larger mutational load, heterozygotes decrease"
   },
   {
-    "objectID": "index.html#potential-future-results",
-    "href": "index.html#potential-future-results",
+    "objectID": "index.html#expected-results",
+    "href": "index.html#expected-results",
     "title": "",
-    "section": "Potential future results",
-    "text": "Potential future results"
+    "section": "Expected results",
+    "text": "Expected results"
   },
   {
-    "objectID": "index.html#potential-future-results-1",
-    "href": "index.html#potential-future-results-1",
+    "objectID": "index.html#expected-results-1",
+    "href": "index.html#expected-results-1",
     "title": "",
-    "section": "Potential future results",
-    "text": "Potential future results"
+    "section": "Expected results",
+    "text": "Expected results"
   },
   {
     "objectID": "index.html#next-steps",
     "href": "index.html#next-steps",
     "title": "",
     "section": "Next steps",
-    "text": "Next steps\n\nResults could be unexpected because we have scaled down the model incorrectly, or the recombination function isn’t representative\nCould look at mutations trapped in the inversion next, plot their contents across runs\nRuns with an inversion with deleterious mutations locked in it may be outweighing the strict fitness benefit we give them"
+    "text": "Next steps\n\nResults could be unexpected because of scaling issues, or the recombination function\nCould look at mutations trapped in the inversion next, plot their contents across runs\nRuns with an inversion with deleterious mutations locked in it may be outweighing the strict fitness benefit we give them\n\n\nResults could be unexpected because of scaling issues, or the recombination function isn’t representative. We scaled down more than Berdan et al., so any scaling differences could have resulted in the observed differences."
   },
   {
     "objectID": "index.html#thank-you",
     "href": "index.html#thank-you",
     "title": "",
     "section": "Thank you!",
-    "text": "Thank you!\nAcknowledgements:\nSLiM development team (Ben Haller, Phillip Messer) as well as their slim-discuss Google forum\nDr. Greg Owens, whose guidance and work in sunflowers has spurred this interest in modelling inversions\nQuestions?"
+    "text": "Thank you!\nAcknowledgements: SLiM development team (Ben Haller, Phillip Messer) as well as their slim-discuss Google forum\nDr. Greg Owens, whose guidance and work in sunflowers has spurred this interest in modelling inversions"
+  },
+  {
+    "objectID": "index.html#questions",
+    "href": "index.html#questions",
+    "title": "",
+    "section": "Questions?",
+    "text": "Questions?"
   }
 ]
