@@ -11,6 +11,8 @@ for (i in 1:files) {
   run_data <- run_data %>% mutate(sim_run=run)
   all_data <- rbind(all_data, run_data)
 }
+
+# results_fitness_pops.png
 all_data %>%
   mutate(fixed_fitness = case_when(inv_genotype == 2 & pop %in% c("pop1","pop2","pop4") ~ fitness - 0.1,
                                    inv_genotype == 2 & pop %in% c("pop6","pop8","pop9") ~ fitness + 0.1,
@@ -37,12 +39,13 @@ summarized_data <- all_data %>%
          qnt_10 = quantile(mean_fit, 0.1),
          mean_sim_fit = quantile(mean_fit, 0.9)) ## 0.5 = median
 
+# results_meanfit.png
 summarized_data %>%
   ggplot(.) +
   geom_line(aes(x=gen,y=mean_sim_fit,group=inv_genotype,color=as.factor(inv_genotype))) +
   geom_ribbon(aes(x=gen,ymin=qnt_10,ymax=qnt_90,group=inv_genotype,fill=as.factor(inv_genotype)),alpha=0.2) # alpha = transparency
 
-#Allele frequency change over time
+# results_freq.png
 all_data %>%
   group_by(gen,pop,inv_genotype) %>%
   summarize(n=n()) %>%
