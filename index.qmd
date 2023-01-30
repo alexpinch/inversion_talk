@@ -70,7 +70,7 @@ A simplified outline for the different outcomes of an inversion, when an inversi
 
 ## How inversions spread
 
-![Fig. 1, Faria et al., 2019 (Modified)](images/faria_2019_2.jpg){width="50%"}
+![Fig. 1, Faria et al. 2019 (Modified)](images/faria_2019_2.jpg){width="50%"}
 
 ::: notes
 More interested in this intermediate stage, whats happening as these inversions are maintained. In the case of our model, locally advantageous alleles causes some population divergence, but when does the mutational load increase tip this balance?
@@ -106,7 +106,7 @@ SLiM is one big loop, I'm pointing out the recombination function here because t
 :::
 
 ::: {.column width="40%"}
-![](images/populations.jpg){width="100%"}
+![](images/populations.png){width="100%"}
 :::
 :::
 
@@ -225,26 +225,32 @@ This is the mean fitness of all populations over time. Fitness can serve as a pr
 So we can look at fitness across different populations. Homozygotes have the worst fitness, as they will have accumulated a larger mutational load, heterozygotes decrease
 :::
 
-## Potential future results
+## Expected results
 
 ![](images/example_graph_1.jpeg)
 
-## Potential future results
+## Expected results
 
 ![](images/example_graph_2.jpeg)
 
 ## Next steps
 
--   Results could be unexpected because we have scaled down the model incorrectly, or the recombination function isn't representative
+-   Results could be unexpected because of scaling issues, or the recombination function
 
 -   Could look at mutations trapped in the inversion next, plot their contents across runs
 
 -   Runs with an inversion with deleterious mutations locked in it may be outweighing the strict fitness benefit we give them
 
+::: notes
+Results could be unexpected because of scaling issues, or the recombination function isn't representative. We scaled down more than Berdan et al., so any scaling differences could have resulted in the observed differences.
+:::
+
 ## Thank you!
 
-Acknowledgements:\
-SLiM development team (Ben Haller, Phillip Messer) as well as their slim-discuss Google forum\
+Acknowledgements: SLiM development team (Ben Haller, Phillip Messer) as well as their slim-discuss Google forum
+
 Dr. Greg Owens, whose guidance and work in sunflowers has spurred this interest in modelling inversions
 
-Questions?
+## Questions?
+
+![](images/end_slide.png){fig-align="right"}
