@@ -1,3 +1,2 @@
 # Modelling locally adaptive inversions  
-## A talk given to fellow lab members, Jan. 2023  
-
+A talk given to my lab about modelling locally adaptive inversions.  
