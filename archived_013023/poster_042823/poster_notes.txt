@@ -1,7 +1,0 @@
-------
-How to format poster?
-Try using normal Quarto (just not reveal)
-Also try poster down
-Perhaps make a ShinyApp as well? sliders for run parameters?
-(Like, if the heterozygote has the advantage?)
-(or, if the starting individual has a bunch of deleterious mutations already?)
