@@ -1,2 +1,3 @@
 # Modelling locally adaptive inversions  
-A talk given to my lab about modelling locally adaptive inversions with SLiM. Slides were built with Quarto Reveal, see HTML or `presentation.pdf`  
+A talk given to my lab about modelling locally adaptive inversions with SLiM. Slides were built with Quarto Reveal.  
+See `presentation.pdf`  or `/docs/index.html`
